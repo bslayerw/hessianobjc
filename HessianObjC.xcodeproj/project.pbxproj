@@ -1,0 +1,620 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		133B3C9509BB81CC0044A2E3 /* BBSHessianObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B3C9409BB81CC0044A2E3 /* BBSHessianObjC.h */; };
+		133B3DD209BB82E60044A2E3 /* BBSHessianObjCDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B3DD109BB82E60044A2E3 /* BBSHessianObjCDefines.h */; };
+		133B3E6A09BB883E0044A2E3 /* BBSHessianObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B3E6909BB883E0044A2E3 /* BBSHessianObjC.m */; };
+		133B404609BB94A60044A2E3 /* BBSHessianTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */; };
+		133B41E009BC10850044A2E3 /* BBSHessianInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B41DE09BC10850044A2E3 /* BBSHessianInvocation.h */; };
+		133B41E109BC10850044A2E3 /* BBSHessianInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B41DF09BC10850044A2E3 /* BBSHessianInvocation.m */; };
+		133B4ADC09BD4CB70044A2E3 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4ADB09BD4CB70044A2E3 /* TestObject.m */; };
+		13FC156609B79C63001909B4 /* BBSHessianDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */; };
+		13FC156709B79C63001909B4 /* BBSHessianDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */; };
+		13FC156809B79C63001909B4 /* BBSHessianEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC155C09B79C63001909B4 /* BBSHessianEncoder.h */; };
+		13FC156909B79C63001909B4 /* BBSHessianEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC155D09B79C63001909B4 /* BBSHessianEncoder.m */; };
+		13FC156E09B79C63001909B4 /* BBSHessianProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC156209B79C63001909B4 /* BBSHessianProxy.h */; };
+		13FC156F09B79C63001909B4 /* BBSHessianProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC156309B79C63001909B4 /* BBSHessianProxy.m */; };
+		13FC157009B79C63001909B4 /* BBSHessianResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC156409B79C63001909B4 /* BBSHessianResult.h */; };
+		13FC157109B79C63001909B4 /* BBSHessianResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC156509B79C63001909B4 /* BBSHessianResult.m */; };
+		13FC16E509B7A887001909B4 /* HessianObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1354499E09AE9142001F2B25 /* HessianObjC.framework */; };
+		13FC1AF509B8086B001909B4 /* BBSHessianMapDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC1AF309B8086B001909B4 /* BBSHessianMapDecoder.h */; };
+		13FC1AF609B8086B001909B4 /* BBSHessianMapDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC1AF409B8086B001909B4 /* BBSHessianMapDecoder.m */; };
+		13FC1C6109B92532001909B4 /* BBSHessianCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC1C5F09B92532001909B4 /* BBSHessianCall.h */; };
+		13FC1C6209B92532001909B4 /* BBSHessianCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC1C6009B92532001909B4 /* BBSHessianCall.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		4A9504CCFFE6A4B311CA0CBA /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4A9504CDFFE6A4B311CA0CBA /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		13544A6209AF8E50001F2B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1354499D09AE9142001F2B25;
+			remoteInfo = HessianCocoa;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		133B3C9409BB81CC0044A2E3 /* BBSHessianObjC.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BBSHessianObjC.h; sourceTree = "<group>"; };
+		133B3DD109BB82E60044A2E3 /* BBSHessianObjCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianObjCDefines.h; sourceTree = "<group>"; };
+		133B3E6909BB883E0044A2E3 /* BBSHessianObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianObjC.m; sourceTree = "<group>"; };
+		133B404209BB94A60044A2E3 /* BBSHessianTest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = BBSHessianTest.h; path = tests/BBSHessianTest.h; sourceTree = "<group>"; };
+		133B404309BB94A60044A2E3 /* BBSHessianTest.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = BBSHessianTest.m; path = tests/BBSHessianTest.m; sourceTree = "<group>"; };
+		133B41DE09BC10850044A2E3 /* BBSHessianInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianInvocation.h; sourceTree = "<group>"; };
+		133B41DF09BC10850044A2E3 /* BBSHessianInvocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianInvocation.m; sourceTree = "<group>"; };
+		133B4ADA09BD4CB70044A2E3 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TestObject.h; path = tests/TestObject.h; sourceTree = "<group>"; };
+		133B4ADB09BD4CB70044A2E3 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TestObject.m; path = tests/TestObject.m; sourceTree = "<group>"; };
+		1354499E09AE9142001F2B25 /* HessianObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HessianObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1354499F09AE9142001F2B25 /* HessianObjC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "HessianObjC-Info.plist"; sourceTree = "<group>"; };
+		13544A5D09AF8E4B001F2B25 /* HessianObjTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HessianObjTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13544A5E09AF8E4B001F2B25 /* HessianObjTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "HessianObjTest-Info.plist"; sourceTree = "<group>"; };
+		13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BBSHessianDecoder.h; sourceTree = "<group>"; };
+		13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BBSHessianDecoder.m; sourceTree = "<group>"; };
+		13FC155C09B79C63001909B4 /* BBSHessianEncoder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BBSHessianEncoder.h; sourceTree = "<group>"; };
+		13FC155D09B79C63001909B4 /* BBSHessianEncoder.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BBSHessianEncoder.m; sourceTree = "<group>"; };
+		13FC156209B79C63001909B4 /* BBSHessianProxy.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BBSHessianProxy.h; sourceTree = "<group>"; };
+		13FC156309B79C63001909B4 /* BBSHessianProxy.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BBSHessianProxy.m; sourceTree = "<group>"; };
+		13FC156409B79C63001909B4 /* BBSHessianResult.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BBSHessianResult.h; sourceTree = "<group>"; };
+		13FC156509B79C63001909B4 /* BBSHessianResult.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BBSHessianResult.m; sourceTree = "<group>"; };
+		13FC1AF309B8086B001909B4 /* BBSHessianMapDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSHessianMapDecoder.h; sourceTree = "<group>"; };
+		13FC1AF409B8086B001909B4 /* BBSHessianMapDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSHessianMapDecoder.m; sourceTree = "<group>"; };
+		13FC1C5F09B92532001909B4 /* BBSHessianCall.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = BBSHessianCall.h; sourceTree = "<group>"; };
+		13FC1C6009B92532001909B4 /* BBSHessianCall.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = BBSHessianCall.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1354499C09AE9142001F2B25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13544A5A09AF8E4B001F2B25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13FC16E509B7A887001909B4 /* HessianObjC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				133B3C9409BB81CC0044A2E3 /* BBSHessianObjC.h */,
+				133B3E6909BB883E0044A2E3 /* BBSHessianObjC.m */,
+				133B3DD109BB82E60044A2E3 /* BBSHessianObjCDefines.h */,
+				13FC1C5F09B92532001909B4 /* BBSHessianCall.h */,
+				13FC1C6009B92532001909B4 /* BBSHessianCall.m */,
+				13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */,
+				13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */,
+				13FC155C09B79C63001909B4 /* BBSHessianEncoder.h */,
+				13FC155D09B79C63001909B4 /* BBSHessianEncoder.m */,
+				13FC1AF309B8086B001909B4 /* BBSHessianMapDecoder.h */,
+				13FC1AF409B8086B001909B4 /* BBSHessianMapDecoder.m */,
+				13FC156209B79C63001909B4 /* BBSHessianProxy.h */,
+				13FC156309B79C63001909B4 /* BBSHessianProxy.m */,
+				13FC156409B79C63001909B4 /* BBSHessianResult.h */,
+				13FC156509B79C63001909B4 /* BBSHessianResult.m */,
+				133B41DE09BC10850044A2E3 /* BBSHessianInvocation.h */,
+				133B41DF09BC10850044A2E3 /* BBSHessianInvocation.m */,
+				13544A7309AF8E70001F2B25 /* Tests */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		13544A7309AF8E70001F2B25 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				133B4ADA09BD4CB70044A2E3 /* TestObject.h */,
+				133B4ADB09BD4CB70044A2E3 /* TestObject.m */,
+				133B404209BB94A60044A2E3 /* BBSHessianTest.h */,
+				133B404309BB94A60044A2E3 /* BBSHessianTest.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1354499E09AE9142001F2B25 /* HessianObjC.framework */,
+				13544A5D09AF8E4B001F2B25 /* HessianObjTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* HessianObjC */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				1354499F09AE9142001F2B25 /* HessianObjC-Info.plist */,
+				13544A5E09AF8E4B001F2B25 /* HessianObjTest-Info.plist */,
+			);
+			name = HessianObjC;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1354499909AE9142001F2B25 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13FC156609B79C63001909B4 /* BBSHessianDecoder.h in Headers */,
+				13FC156809B79C63001909B4 /* BBSHessianEncoder.h in Headers */,
+				13FC156E09B79C63001909B4 /* BBSHessianProxy.h in Headers */,
+				13FC157009B79C63001909B4 /* BBSHessianResult.h in Headers */,
+				13FC1AF509B8086B001909B4 /* BBSHessianMapDecoder.h in Headers */,
+				13FC1C6109B92532001909B4 /* BBSHessianCall.h in Headers */,
+				133B3C9509BB81CC0044A2E3 /* BBSHessianObjC.h in Headers */,
+				133B3DD209BB82E60044A2E3 /* BBSHessianObjCDefines.h in Headers */,
+				133B41E009BC10850044A2E3 /* BBSHessianInvocation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1354499D09AE9142001F2B25 /* HessianObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 135449A109AE9144001F2B25 /* Build configuration list for PBXNativeTarget "HessianObjC" */;
+			buildPhases = (
+				1354499909AE9142001F2B25 /* Headers */,
+				1354499A09AE9142001F2B25 /* Resources */,
+				1354499B09AE9142001F2B25 /* Sources */,
+				1354499C09AE9142001F2B25 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "HessianCocoa-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HessianCocoa;
+				ZERO_LINK = YES;
+			};
+			dependencies = (
+			);
+			name = HessianObjC;
+			productName = HessianCocoa;
+			productReference = 1354499E09AE9142001F2B25 /* HessianObjC.framework */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.HessianCocoa</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>FMWK</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.framework";
+		};
+		13544A5C09AF8E4B001F2B25 /* HessianObjTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13544A5F09AF8E4C001F2B25 /* Build configuration list for PBXNativeTarget "HessianObjTest" */;
+			buildPhases = (
+				13544A5809AF8E4B001F2B25 /* Resources */,
+				13544A5909AF8E4B001F2B25 /* Sources */,
+				13544A5A09AF8E4B001F2B25 /* Frameworks */,
+				13544A5B09AF8E4B001F2B25 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "HessianObjTest-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HessianObjTest;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			dependencies = (
+				13544A6309AF8E50001F2B25 /* PBXTargetDependency */,
+			);
+			name = HessianObjTest;
+			productName = HessianObjTest;
+			productReference = 13544A5D09AF8E4B001F2B25 /* HessianObjTest.octest */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.yourcompany.HessianObjTest</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>
+";
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HessianObjC" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				4A9504CCFFE6A4B311CA0CBA /* Debug */,
+				4A9504CDFFE6A4B311CA0CBA /* Release */,
+			);
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* HessianObjC */;
+			projectDirPath = "";
+			targets = (
+				1354499D09AE9142001F2B25 /* HessianObjC */,
+				13544A5C09AF8E4B001F2B25 /* HessianObjTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1354499A09AE9142001F2B25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13544A5809AF8E4B001F2B25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13544A5B09AF8E4B001F2B25 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1354499B09AE9142001F2B25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13FC156709B79C63001909B4 /* BBSHessianDecoder.m in Sources */,
+				13FC156909B79C63001909B4 /* BBSHessianEncoder.m in Sources */,
+				13FC156F09B79C63001909B4 /* BBSHessianProxy.m in Sources */,
+				13FC157109B79C63001909B4 /* BBSHessianResult.m in Sources */,
+				13FC1AF609B8086B001909B4 /* BBSHessianMapDecoder.m in Sources */,
+				13FC1C6209B92532001909B4 /* BBSHessianCall.m in Sources */,
+				133B3E6A09BB883E0044A2E3 /* BBSHessianObjC.m in Sources */,
+				133B41E109BC10850044A2E3 /* BBSHessianInvocation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13544A5909AF8E4B001F2B25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				133B404609BB94A60044A2E3 /* BBSHessianTest.m in Sources */,
+				133B4ADC09BD4CB70044A2E3 /* TestObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13544A6309AF8E50001F2B25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1354499D09AE9142001F2B25 /* HessianObjC */;
+			targetProxy = 13544A6209AF8E50001F2B25 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		135449A209AE9144001F2B25 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "HessianObjC-info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HessianObjC;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		135449A309AE9144001F2B25 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "HessianObjC-info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HessianObjC;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		13544A6009AF8E4C001F2B25 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "HessianObjTest-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HessianObjTest;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Development;
+		};
+		13544A6109AF8E4C001F2B25 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "HessianObjTest-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = HessianObjTest;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		C01FCF4F08A954540054247B /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = NO;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Development;
+		};
+		C01FCF5008A954540054247B /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = NO;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		135449A109AE9144001F2B25 /* Build configuration list for PBXNativeTarget "HessianObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				135449A209AE9144001F2B25 /* Development */,
+				135449A309AE9144001F2B25 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+		13544A5F09AF8E4C001F2B25 /* Build configuration list for PBXNativeTarget "HessianObjTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13544A6009AF8E4C001F2B25 /* Development */,
+				13544A6109AF8E4C001F2B25 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HessianObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Development */,
+				C01FCF5008A954540054247B /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
