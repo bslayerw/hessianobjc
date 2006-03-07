@@ -28,7 +28,6 @@
 
 
 + (void) initialize {
-    NSLog(@"initialize hessian encoder");
     [BBSHessianEncoder setClassName:@"com.sbs.colledia.hessian.test.TestObject" forClass:[TestObject class]];
     [BBSHessianDecoder setClass:[TestObject class] forClassName:@"com.sbs.colledia.hessian.test.TestObject"];
 }
