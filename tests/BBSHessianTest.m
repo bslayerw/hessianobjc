@@ -85,7 +85,7 @@
 }
 
 - (void) testEcho {
-    NSURL * url = [NSURL URLWithString:@"http://localhost/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:@"http://www.caucho.com/hessian/test/basic"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     
     NSMutableDictionary * encodeMapping = [NSMutableDictionary dictionary];
@@ -134,7 +134,7 @@
 
 - (void) testFault {
 
-    NSURL * url = [NSURL URLWithString:@"http://localhost/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:@"http://www.caucho.com/hessian/test/basic"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"fault" withParameters:nil];
     STAssertNotNil(result,@"fault test return nil value");
