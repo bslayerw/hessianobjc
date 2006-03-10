@@ -18,6 +18,9 @@
 
 @class BBSHessianCall;
 
+/** Encapsulates a HessianCall and the context for callback when the invocation is complete.
+  */
+  
 @interface BBSHessianInvocation : NSObject {
     @private
     id callbackTarget;
@@ -26,15 +29,34 @@
     NSMutableData * asynchResponseData;
 }
 
+/** Initiate with a BBSHessianCall @see BBSHessianCall
+  * @param aCall is a BBSHessianCall @see BBSHessianCall
+  * @param aTarget is the target object that the callbackSelector will be called on when the invocation is complete
+  * @param aSelector is the selector that will be called on the target object with the result value of the invocation.
+  * The method signature should be like, - (void) myCallbackSelector:(id):resultValue. So call this with @selector(myCallbackSelector:).
+  */
 - (id) initWithCall:(BBSHessianCall *) aCall
      callbackTarget:(id) aTarget
    callbackSelector:(SEL) aSelector;
-
+   
+/** Return the remote method name for the invocation
+  * @return an NSString of the remote method name.
+  */
 - (NSString *) methodName;
 
+/** Return the Hessian encoded data of the encapsulated call @see BBSHessianCall data. 
+  * @return Hessian encoded data of the encapsulated call @see BBSHessianCall data. 
+ */
 - (NSData *) callData;
 
+/** Return the object that will be called with the callback selector when the invocation is complete.
+  * @return the object that will be called with the callback selector when the invocation is complete.
+  */
 - (id) callbackTarget;
+/** Return the selector that will be called on the callback target object when the invocation is complete.
+  * @return the selector that will be called on the callback target object when the invocation is complete.
+  * The selector should have a signature like :  - (void) myCallbackSelector:(id):resultValue. Which would have been created with @selector(myCallbackSelector:).
+  */
 - (SEL) callbackSelector;
 
 @end
