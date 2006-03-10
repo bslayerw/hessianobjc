@@ -27,6 +27,13 @@
     NSDictionary * hessianMap;
 }
 
+/** Initialize with a NSDictionary that was decoded from a Hessian Map type. 
+  * @param aHessianMap is an NSDictionary thas was decoded and returned from either
+  * BBSHessianDecoder + (id) decodedObjectWithData:(NSData *) someData;
+  * BBSHessianDecoder - (id) decodedObject;
+  * Note that either of these methods will only return a NSDictionary if a map was decoded
+  * and no class mapping was found. 
+  */
 - (id) initForReadingWithDictionary:(NSDictionary *) aHessianMap;
 
 @end
