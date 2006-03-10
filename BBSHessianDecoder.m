@@ -146,7 +146,7 @@ static NSMutableDictionary * gClassMapping;
         case 'V': obj = [self decodeList]; break;
         case 'L': obj = [self decodeLong] ;break;
         case 'M': obj = [self decodeMap]; break;
-        case 'N': NSLog(@"null value");break;
+        case 'N': obj = nil ;break;
         case 'R': obj = [self decodeRef];break;
         case 's': obj = [self decodeString:'s'];break;
         case 'S': obj = [self decodeString:'S'];break;
