@@ -152,7 +152,13 @@ static NSMutableDictionary * gClassMapping;
         case 'S': obj = [self decodeString:'S'];break;
         case 'x': obj = [self decodeXml:'x'];break;
         case 'X': obj = [self decodeXml:'X'];break;
-        default: NSLog(@"unknown data type returned from hessian service");
+        default:  {
+            NSDictionary * userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"Unknown tag returned from server %c",code] 
+                                                                  forKey:NSLocalizedDescriptionKey];
+            obj = [NSError errorWithDomain:BBSHessianObjCError
+                                      code:BBSHessianProtocolError
+                                  userInfo:userInfo];break;
+        }
     }
     
     return obj;
