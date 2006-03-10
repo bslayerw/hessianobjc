@@ -21,8 +21,6 @@
 
 @interface BBSHessianDecoder (PrivateMethods) 
 
-- (void) startReply;
-- (void) endReply;
 - (id) decodeObject;
 - (id) decodeObjectForCode:(uint8_t) code;
 /** utility function to read the length of a string  */
@@ -119,28 +117,6 @@ static NSMutableDictionary * gClassMapping;
 @end
 
 @implementation BBSHessianDecoder (PrivateMethods) 
-
-- (void) startReply {
-    uint8_t returnChar = 'e';
-    if([dataInputStream hasBytesAvailable]) {    
-       [dataInputStream read:&returnChar maxLength:1];       
-        if(returnChar == 'r') {
-            //yep it's a Hessian return
-            uint8_t major = 0;
-            uint8_t minor = 0;
-            [dataInputStream read:&major maxLength:1];
-            [dataInputStream read:&minor maxLength:1];      
-            #pragma unused (major,minor)      
-        }
-        else {
-            //protocol error
-            //TODO: should probably thrown an exception here
-        }
-    }
-    else {
-        NSLog(@"ERROR?:no data available");
-    }
-}
 
 - (id) decodeObject {
     uint8_t objectTag = 'e';
@@ -484,18 +460,6 @@ static NSMutableDictionary * gClassMapping;
     return len;
 }
 
-- (void) endReply {
-    uint8_t returnChar = 'e';
-    if([dataInputStream hasBytesAvailable]) {    
-       [dataInputStream read:&returnChar maxLength:1];  
-       if(returnChar= 'z') {
-           NSLog(@"reply complete");
-       }
-       else {
-        NSLog(@"error completing reply, last byte != z [%c]",returnChar);
-       }
-    }
-}
 
 @end
 
