@@ -20,6 +20,7 @@
 
 
 @interface TestObject : NSObject <NSCoding> {
+    @private
     NSString * fname;
     NSString * lname;
 }
