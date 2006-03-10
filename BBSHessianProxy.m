@@ -142,18 +142,31 @@
 }
 
 
-
+/*- (void) setClassMapping:(NSDictionary *) aClassMapping { 
+    [aClassMapping retain];
+    [encoderClassMapping release];
+    encoderClassMapping = classMapping;
+    [decoderClassMapping release];
+    decoderClassMapping = [[NSMutableDictionary dictionary] retain];
+    NSEnumerator * e = [aClassMapping keyEnumerator];
+    id current;
+    //this basically switches the key value pairs around for the decoder mapping
+    while(current = [e nextObject]) {
+        id value = [aClassMapping objectForKey:current];
+        [decoderClassMapping setObject:current forKey:value];
+    }    
+}*/
 + (void) setClassMapping:(NSDictionary *) classMapping { 
-    NSMutableDictionary * decoderMapping = [NSMutableDictionary dictionary];
+    NSMutableDictionary * encoderMapping = [NSMutableDictionary dictionary];
     NSEnumerator * e = [classMapping keyEnumerator];
     id current;
-    //this basiclly switches the key value pairs around for the decoder mapping
+    //this basically switches the key value pairs around for the decoder mapping
     while(current = [e nextObject]) {
         id value = [classMapping objectForKey:current];
-        [decoderMapping setObject:current forKey:value];
+        [encoderMapping setObject:current forKey:value];
     }
-    [BBSHessianEncoder setClassNameMapping:classMapping];
-    [BBSHessianDecoder setClassNameMapping:decoderMapping];
+    [BBSHessianEncoder setClassNameMapping:encoderMapping];
+    [BBSHessianDecoder setClassNameMapping:classMapping];
 }
 
 + (void) setEncoderClassMapping:(NSDictionary *) encoderMapping {
