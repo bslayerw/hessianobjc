@@ -16,7 +16,10 @@
 // limitations under the License.
 //
 
+/** Responsible for decoding a result from a Hessian call */
+
 @interface BBSHessianResult : NSObject {
+    @private
     NSData * data;
     NSInputStream * dataInputStream;
     id resultValue;
@@ -24,7 +27,13 @@
     int minorVersion;
 }
 
+/** Instantiate and initialize with data that will be decoded from Hessian format.
+  * @param someData is NSData encoded in Hessian binary format 
+  */
 - (id) initForReadingWithData:(NSData *) someData;
+/** Returns the result value that has been decoded from the remote call result. 
+  * @return a decoded object from a remote call result @see BBSHessianDecoder decodeObject.
+  */
 - (id) resultValue;
 
 @end
