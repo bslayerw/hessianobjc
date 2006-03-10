@@ -30,11 +30,7 @@
 @implementation BBSHessianCall
 
 - (id) initWithRemoteMethodName:(NSString *) aMethodName {
-    if((self = [super init]) != nil) {        
-        //[self setServiceUrl:aServiceUrl];
-        //WARN: this should never happen but because
-        //we are converting a 32 bit value -> 16 bit
-        //the method name cannot be extremely long            
+    if((self = [super init]) != nil) {                        
         methodName = [aMethodName retain];              
     }
     return self;
@@ -48,7 +44,7 @@
 
 
 - (NSData *) data {
-    //lazy create the data
+    //lazy creation
     if(!callData) {   
         callData = [[NSMutableData data] retain];    
         [self startCall];
