@@ -642,7 +642,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 350";
 		rLen = 258;
-		rLoc = 11393;
+		rLoc = 11078;
 		rType = 0;
 		vrLen = 1801;
 		vrLoc = 11061;
@@ -689,7 +689,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 350";
 		rLen = 258;
-		rLoc = 11393;
+		rLoc = 11078;
 		rType = 0;
 		vrLen = 1801;
 		vrLoc = 11061;
@@ -743,7 +743,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 1913;
 		vrLoc = 7702;
@@ -793,7 +793,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 1913;
 		vrLoc = 7702;
@@ -890,7 +890,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 1884;
 		vrLoc = 7731;
@@ -1117,7 +1117,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 1884;
 		vrLoc = 7731;
@@ -1411,7 +1411,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 1884;
 		vrLoc = 7731;
@@ -1541,7 +1541,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 1884;
 		vrLoc = 7731;
@@ -1631,7 +1631,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 2217;
 		vrLoc = 7603;
@@ -1811,7 +1811,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 349";
 		rLen = 0;
-		rLoc = 11384;
+		rLoc = 11069;
 		rType = 0;
 		vrLen = 2217;
 		vrLoc = 7603;
@@ -2241,7 +2241,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 104";
 		rLen = 0;
-		rLoc = 3346;
+		rLoc = 3306;
 		rType = 0;
 		vrLen = 1605;
 		vrLoc = 2713;
@@ -2321,7 +2321,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 260";
 		rLen = 0;
-		rLoc = 8497;
+		rLoc = 8182;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 2586;
@@ -2341,7 +2341,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 104";
 		rLen = 0;
-		rLoc = 3346;
+		rLoc = 3306;
 		rType = 0;
 		vrLen = 1605;
 		vrLoc = 2713;
@@ -2371,7 +2371,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 104";
 		rLen = 0;
-		rLoc = 3346;
+		rLoc = 3306;
 		rType = 0;
 		vrLen = 1605;
 		vrLoc = 2713;
@@ -2821,7 +2821,7 @@
 		fRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */;
 		name = "BBSHessianTest.m: 134";
 		rLen = 0;
-		rLoc = 6392;
+		rLoc = 6398;
 		rType = 0;
 		vrLen = 2628;
 		vrLoc = 4256;
@@ -2831,7 +2831,7 @@
 		fRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */;
 		name = "BBSHessianTest.m: 134";
 		rLen = 0;
-		rLoc = 6392;
+		rLoc = 6398;
 		rType = 0;
 		vrLen = 2628;
 		vrLoc = 4256;
@@ -3031,7 +3031,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 257";
 		rLen = 0;
-		rLoc = 8346;
+		rLoc = 8031;
 		rType = 0;
 		vrLen = 2043;
 		vrLoc = 7324;
@@ -3111,7 +3111,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 257";
 		rLen = 0;
-		rLoc = 8346;
+		rLoc = 8031;
 		rType = 0;
 		vrLen = 2043;
 		vrLoc = 7324;
@@ -5206,16 +5206,16 @@
 	};
 	133B404209BB94A60044A2E3 /* BBSHessianTest.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1039, 748}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1039, 494}}";
 			sepNavSelRange = "{841, 0}";
-			sepNavVisRect = "{{0, 0}, {1039, 748}}";
+			sepNavVisRect = "{{0, 0}, {1039, 494}}";
 		};
 	};
 	133B404309BB94A60044A2E3 /* BBSHessianTest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {986, 2058}}";
-			sepNavSelRange = "{963, 0}";
-			sepNavVisRect = "{{0, 203}, {986, 678}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1039, 2058}}";
+			sepNavSelRange = "{6143, 85}";
+			sepNavVisRect = "{{0, 386}, {1039, 677}}";
 			sepNavWindowFrame = "{{-1642, 36}, {808, 988}}";
 		};
 	};
@@ -7475,7 +7475,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 409";
 		rLen = 0;
-		rLoc = 13392;
+		rLoc = 13077;
 		rType = 0;
 		vrLen = 2099;
 		vrLoc = 12258;
@@ -7505,7 +7505,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 409";
 		rLen = 0;
-		rLoc = 13392;
+		rLoc = 13077;
 		rType = 0;
 		vrLen = 2099;
 		vrLoc = 12258;
@@ -7525,7 +7525,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 408";
 		rLen = 0;
-		rLoc = 13341;
+		rLoc = 13026;
 		rType = 0;
 		vrLen = 2108;
 		vrLoc = 12258;
@@ -7595,7 +7595,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "userInfo:nil];";
 		rLen = 1;
-		rLoc = 13392;
+		rLoc = 13077;
 		rType = 0;
 		vrLen = 2335;
 		vrLoc = 12511;
@@ -7615,7 +7615,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 411";
 		rLen = 0;
-		rLoc = 13392;
+		rLoc = 13077;
 		rType = 0;
 		vrLen = 2335;
 		vrLoc = 12511;
@@ -7815,7 +7815,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 419";
 		rLen = 0;
-		rLoc = 13845;
+		rLoc = 13530;
 		rType = 0;
 		vrLen = 2652;
 		vrLoc = 13049;
@@ -7885,7 +7885,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 449";
 		rLen = 0;
-		rLoc = 15211;
+		rLoc = 14896;
 		rType = 0;
 		vrLen = 1473;
 		vrLoc = 6272;
@@ -7915,7 +7915,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 405";
 		rLen = 373;
-		rLoc = 13019;
+		rLoc = 12704;
 		rType = 0;
 		vrLen = 2202;
 		vrLoc = 12508;
@@ -8075,7 +8075,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 405";
 		rLen = 373;
-		rLoc = 13019;
+		rLoc = 12704;
 		rType = 0;
 		vrLen = 1577;
 		vrLoc = 46;
@@ -8245,7 +8245,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 436";
 		rLen = 0;
-		rLoc = 14601;
+		rLoc = 14286;
 		rType = 0;
 		vrLen = 1567;
 		vrLoc = 0;
@@ -8295,7 +8295,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 436";
 		rLen = 0;
-		rLoc = 14601;
+		rLoc = 14286;
 		rType = 0;
 		vrLen = 1646;
 		vrLoc = 10215;
@@ -8515,7 +8515,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 436";
 		rLen = 0;
-		rLoc = 14601;
+		rLoc = 14286;
 		rType = 0;
 		vrLen = 1586;
 		vrLoc = 964;
@@ -8575,7 +8575,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 436";
 		rLen = 0;
-		rLoc = 14601;
+		rLoc = 14286;
 		rType = 0;
 		vrLen = 1584;
 		vrLoc = 0;
@@ -8735,7 +8735,7 @@
 		fRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */;
 		name = "@end";
 		rLen = 5;
-		rLoc = 6875;
+		rLoc = 6881;
 		rType = 0;
 		vrLen = 1931;
 		vrLoc = 4374;
@@ -8755,7 +8755,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 386";
 		rLen = 0;
-		rLoc = 12436;
+		rLoc = 12121;
 		rType = 0;
 		vrLen = 1784;
 		vrLoc = 15388;
@@ -8775,7 +8775,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 477";
 		rLen = 0;
-		rLoc = 16715;
+		rLoc = 16400;
 		rType = 0;
 		vrLen = 1764;
 		vrLoc = 7777;
@@ -8885,7 +8885,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 477";
 		rLen = 0;
-		rLoc = 16715;
+		rLoc = 16400;
 		rType = 0;
 		vrLen = 2111;
 		vrLoc = 7677;
@@ -9085,7 +9085,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 477";
 		rLen = 0;
-		rLoc = 16715;
+		rLoc = 16400;
 		rType = 0;
 		vrLen = 2111;
 		vrLoc = 7677;
@@ -9155,7 +9155,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 115";
 		rLen = 0;
-		rLoc = 3508;
+		rLoc = 3468;
 		rType = 0;
 		vrLen = 1332;
 		vrLoc = 6445;
@@ -9175,7 +9175,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 115";
 		rLen = 0;
-		rLoc = 3508;
+		rLoc = 3468;
 		rType = 0;
 		vrLen = 1088;
 		vrLoc = 16259;
@@ -9195,7 +9195,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 110";
 		rLen = 0;
-		rLoc = 3508;
+		rLoc = 3468;
 		rType = 0;
 		vrLen = 1279;
 		vrLoc = 2932;
@@ -9395,7 +9395,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 110";
 		rLen = 0;
-		rLoc = 3508;
+		rLoc = 3468;
 		rType = 0;
 		vrLen = 1401;
 		vrLoc = 0;
@@ -9505,7 +9505,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 110";
 		rLen = 0;
-		rLoc = 3508;
+		rLoc = 3468;
 		rType = 0;
 		vrLen = 1320;
 		vrLoc = 2862;
@@ -10420,7 +10420,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 257";
 		rLen = 0;
-		rLoc = 8346;
+		rLoc = 8031;
 		rType = 0;
 		vrLen = 1841;
 		vrLoc = 15506;
@@ -10570,7 +10570,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 257";
 		rLen = 0;
-		rLoc = 8346;
+		rLoc = 8031;
 		rType = 0;
 		vrLen = 1995;
 		vrLoc = 7324;
@@ -10810,7 +10810,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 257";
 		rLen = 0;
-		rLoc = 8346;
+		rLoc = 8031;
 		rType = 0;
 		vrLen = 1726;
 		vrLoc = 15621;
@@ -10850,7 +10850,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 257";
 		rLen = 0;
-		rLoc = 8346;
+		rLoc = 8031;
 		rType = 0;
 		vrLen = 1777;
 		vrLoc = 15570;
@@ -11100,7 +11100,7 @@
 		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
 		name = "BBSHessianDecoder.m: 257";
 		rLen = 0;
-		rLoc = 8346;
+		rLoc = 8031;
 		rType = 0;
 		vrLen = 1841;
 		vrLoc = 15506;
@@ -11575,6 +11575,278 @@
 		vrLen = 869;
 		vrLoc = 0;
 	};
+	13F3EED809C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 133B404209BB94A60044A2E3 /* BBSHessianTest.h */;
+		name = "BBSHessianTest.h: testEcho";
+		rLen = 0;
+		rLoc = 841;
+		rType = 0;
+		vrLen = 869;
+		vrLoc = 0;
+	};
+	13F3EED909C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC1C6009B92532001909B4 /* BBSHessianCall.m */;
+		name = "BBSHessianCall.m: 30";
+		rLen = 0;
+		rLoc = 852;
+		rType = 0;
+		vrLen = 1180;
+		vrLoc = 797;
+	};
+	13F3EEDA09C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC156509B79C63001909B4 /* BBSHessianResult.m */;
+		name = "BBSHessianResult.m: 21";
+		rLen = 0;
+		rLoc = 755;
+		rType = 0;
+		vrLen = 2203;
+		vrLoc = 815;
+	};
+	13F3EEDB09C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */;
+		name = "- (id) decodedObject;";
+		rLen = 21;
+		rLoc = 1830;
+		rType = 0;
+		vrLen = 2163;
+		vrLoc = 0;
+	};
+	13F3EEDC09C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		rLen = 0;
+		rLoc = 832;
+		rType = 0;
+	};
+	13F3EEDD09C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 133B404209BB94A60044A2E3 /* BBSHessianTest.h */;
+		name = "BBSHessianTest.h: testEcho";
+		rLen = 0;
+		rLoc = 841;
+		rType = 0;
+		vrLen = 869;
+		vrLoc = 0;
+	};
+	13F3EEDE09C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC1C6009B92532001909B4 /* BBSHessianCall.m */;
+		name = "BBSHessianCall.m: 30";
+		rLen = 0;
+		rLoc = 852;
+		rType = 0;
+		vrLen = 1180;
+		vrLoc = 797;
+	};
+	13F3EEDF09C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */;
+		name = "- (id) decodedObject;";
+		rLen = 21;
+		rLoc = 1830;
+		rType = 0;
+		vrLen = 2163;
+		vrLoc = 0;
+	};
+	13F3EEE009C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC156509B79C63001909B4 /* BBSHessianResult.m */;
+		name = "BBSHessianResult.m: 21";
+		rLen = 0;
+		rLoc = 755;
+		rType = 0;
+		vrLen = 2203;
+		vrLoc = 815;
+	};
+	13F3EEE109C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */;
+		name = "- (id) decodedObject;";
+		rLen = 21;
+		rLoc = 1830;
+		rType = 0;
+		vrLen = 2163;
+		vrLoc = 0;
+	};
+	13F3EEE209C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 257";
+		rLen = 0;
+		rLoc = 8031;
+		rType = 0;
+		vrLen = 1613;
+		vrLoc = 0;
+	};
+	13F3EEE309C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */;
+		name = "- (id) decodedObject;";
+		rLen = 21;
+		rLoc = 1830;
+		rType = 0;
+		vrLen = 2163;
+		vrLoc = 0;
+	};
+	13F3EEE409C10285005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 462";
+		rLen = 0;
+		rLoc = 16687;
+		rType = 0;
+		vrLen = 1978;
+		vrLoc = 14336;
+	};
+	13F3EEEA09C1031E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 462";
+		rLen = 0;
+		rLoc = 16687;
+		rType = 0;
+		vrLen = 1978;
+		vrLoc = 14336;
+	};
+	13F3EEEB09C1031E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 149";
+		rLen = 0;
+		rLoc = 4681;
+		rType = 0;
+		vrLen = 1808;
+		vrLoc = 3626;
+	};
+	13F3EEFB09C1041E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: parse error before '*' token";
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		rLen = 0;
+		rLoc = 154;
+		rType = 1;
+	};
+	13F3EEFC09C1041E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 156";
+		rLen = 0;
+		rLoc = 5116;
+		rType = 0;
+		vrLen = 2034;
+		vrLoc = 3626;
+	};
+	13F3EF0409C1058E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		rLen = 0;
+		rLoc = 3683;
+		rType = 0;
+	};
+	13F3EF0509C1058E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 119";
+		rLen = 0;
+		rLoc = 3683;
+		rType = 0;
+		vrLen = 608;
+		vrLoc = 3469;
+	};
+	13F3EF0609C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 128";
+		rLen = 0;
+		rLoc = 3932;
+		rType = 0;
+		vrLen = 1686;
+		vrLoc = 14717;
+	};
+	13F3EF0709C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC1AF409B8086B001909B4 /* BBSHessianMapDecoder.m */;
+		name = "BBSHessianMapDecoder.m: decodeDoubleForKey:";
+		rLen = 0;
+		rLoc = 1821;
+		rType = 0;
+		vrLen = 1098;
+		vrLoc = 470;
+	};
+	13F3EF0809C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 133B404209BB94A60044A2E3 /* BBSHessianTest.h */;
+		name = "BBSHessianTest.h: testEcho";
+		rLen = 0;
+		rLoc = 841;
+		rType = 0;
+		vrLen = 869;
+		vrLoc = 0;
+	};
+	13F3EF0909C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */;
+		name = "STAssertNotNil([result objectForKey:@\"testInt\"],@\"test testInt was not echoed\");";
+		rLen = 85;
+		rLoc = 6147;
+		rType = 0;
+		vrLen = 1853;
+		vrLoc = 5027;
+	};
+	13F3EF0A09C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */;
+		name = "BBSHessianDecoder.m: 128";
+		rLen = 0;
+		rLoc = 3932;
+		rType = 0;
+		vrLen = 1686;
+		vrLoc = 14717;
+	};
+	13F3EF0B09C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */;
+		name = "STAssertNotNil([result objectForKey:@\"testInt\"],@\"test testInt was not echoed\");";
+		rLen = 85;
+		rLoc = 6147;
+		rType = 0;
+		vrLen = 1853;
+		vrLoc = 5027;
+	};
+	13F3EF0C09C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13FC1AF409B8086B001909B4 /* BBSHessianMapDecoder.m */;
+		name = "BBSHessianMapDecoder.m: decodeDoubleForKey:";
+		rLen = 0;
+		rLoc = 1821;
+		rType = 0;
+		vrLen = 1098;
+		vrLoc = 470;
+	};
+	13F3EF0D09C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 133B404209BB94A60044A2E3 /* BBSHessianTest.h */;
+		name = "BBSHessianTest.h: testEcho";
+		rLen = 0;
+		rLoc = 841;
+		rType = 0;
+		vrLen = 869;
+		vrLoc = 0;
+	};
+	13F3EF0E09C1059E005F70F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */;
+		name = "STAssertNotNil([result objectForKey:@\"testInt\"],@\"test testInt was not echoed\");";
+		rLen = 85;
+		rLoc = 6147;
+		rType = 0;
+		vrLen = 2453;
+		vrLoc = 847;
+	};
 	13FC128009B667E3001909B4 /* TestObject.h */ = {
 		isa = PBXFileReference;
 		fileEncoding = 4;
@@ -11620,9 +11892,9 @@
 	};
 	13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1033, 7028}}";
-			sepNavSelRange = "{8346, 0}";
-			sepNavVisRect = "{{0, 6255}, {1033, 748}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1359, 6608}}";
+			sepNavSelRange = "{3683, 0}";
+			sepNavVisRect = "{{0, 1524}, {1359, 383}}";
 		};
 	};
 	13FC155C09B79C63001909B4 /* BBSHessianEncoder.h */ = {
@@ -11753,9 +12025,9 @@
 	};
 	13FC1AF409B8086B001909B4 /* BBSHessianMapDecoder.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1034, 1624}}";
-			sepNavSelRange = "{1515, 0}";
-			sepNavVisRect = "{{0, 667}, {1034, 748}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1039, 1624}}";
+			sepNavSelRange = "{1821, 0}";
+			sepNavVisRect = "{{0, 190}, {1039, 494}}";
 		};
 	};
 	13FC1B1E09B80A95001909B4 /* PBXTextBookmark */ = {
@@ -11831,9 +12103,9 @@
 	};
 	13FC1C6009B92532001909B4 /* BBSHessianCall.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1033, 1358}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1039, 1358}}";
 			sepNavSelRange = "{852, 0}";
-			sepNavVisRect = "{{0, 111}, {1033, 748}}";
+			sepNavVisRect = "{{0, 352}, {1039, 748}}";
 		};
 	};
 	13FC1C8C09B925DD001909B4 /* PBXTextBookmark */ = {
@@ -13118,6 +13390,34 @@
 			13F3EED109C0FFA7005F70F7 /* PBXTextBookmark */ = 13F3EED109C0FFA7005F70F7 /* PBXTextBookmark */;
 			13F3EED209C0FFA7005F70F7 /* PBXTextBookmark */ = 13F3EED209C0FFA7005F70F7 /* PBXTextBookmark */;
 			13F3EED309C0FFA7005F70F7 /* PBXTextBookmark */ = 13F3EED309C0FFA7005F70F7 /* PBXTextBookmark */;
+			13F3EED809C10285005F70F7 /* PBXTextBookmark */ = 13F3EED809C10285005F70F7 /* PBXTextBookmark */;
+			13F3EED909C10285005F70F7 /* PBXTextBookmark */ = 13F3EED909C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEDA09C10285005F70F7 /* PBXTextBookmark */ = 13F3EEDA09C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEDB09C10285005F70F7 /* PBXTextBookmark */ = 13F3EEDB09C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEDC09C10285005F70F7 /* PBXTextBookmark */ = 13F3EEDC09C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEDD09C10285005F70F7 /* PBXTextBookmark */ = 13F3EEDD09C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEDE09C10285005F70F7 /* PBXTextBookmark */ = 13F3EEDE09C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEDF09C10285005F70F7 /* PBXTextBookmark */ = 13F3EEDF09C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEE009C10285005F70F7 /* PBXTextBookmark */ = 13F3EEE009C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEE109C10285005F70F7 /* PBXTextBookmark */ = 13F3EEE109C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEE209C10285005F70F7 /* PBXTextBookmark */ = 13F3EEE209C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEE309C10285005F70F7 /* PBXTextBookmark */ = 13F3EEE309C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEE409C10285005F70F7 /* PBXTextBookmark */ = 13F3EEE409C10285005F70F7 /* PBXTextBookmark */;
+			13F3EEEA09C1031E005F70F7 /* PBXTextBookmark */ = 13F3EEEA09C1031E005F70F7 /* PBXTextBookmark */;
+			13F3EEEB09C1031E005F70F7 /* PBXTextBookmark */ = 13F3EEEB09C1031E005F70F7 /* PBXTextBookmark */;
+			13F3EEFB09C1041E005F70F7 /* PBXTextBookmark */ = 13F3EEFB09C1041E005F70F7 /* PBXTextBookmark */;
+			13F3EEFC09C1041E005F70F7 /* PBXTextBookmark */ = 13F3EEFC09C1041E005F70F7 /* PBXTextBookmark */;
+			13F3EF0409C1058E005F70F7 /* PBXTextBookmark */ = 13F3EF0409C1058E005F70F7 /* PBXTextBookmark */;
+			13F3EF0509C1058E005F70F7 /* PBXTextBookmark */ = 13F3EF0509C1058E005F70F7 /* PBXTextBookmark */;
+			13F3EF0609C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0609C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0709C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0709C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0809C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0809C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0909C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0909C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0A09C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0A09C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0B09C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0B09C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0C09C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0C09C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0D09C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0D09C1059E005F70F7 /* PBXTextBookmark */;
+			13F3EF0E09C1059E005F70F7 /* PBXTextBookmark */ = 13F3EF0E09C1059E005F70F7 /* PBXTextBookmark */;
 			13FC129609B66876001909B4 = 13FC129609B66876001909B4 /* PBXTextBookmark */;
 			13FC129709B66876001909B4 = 13FC129709B66876001909B4 /* PBXTextBookmark */;
 			13FC15B309B79EC0001909B4 = 13FC15B309B79EC0001909B4 /* PBXTextBookmark */;
