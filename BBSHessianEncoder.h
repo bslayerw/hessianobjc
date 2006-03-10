@@ -15,18 +15,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+/** Encodes objects into Hessian binary protocol format */
 
 @interface BBSHessianEncoder : NSCoder {
+    @private
     NSMutableData * callData;
     NSMutableDictionary * classMapping;
 }
 
 
-
+/** Initialize with data that all encoded objects will be appened to.
+  * This method usually isn't used directly. 
+  * @param data is NSMutableData that all encoded objects will be appended to.
+  */
 - (id) initForWritingWithMutableData:(NSMutableData *)data;
+
+/** Encode an object and return the data in Hessian binary format.
+  * @param anObject is can be an NSObject that needs to be encoded in Hessian format.
+  * If encoding of ints, double, longs and bool is required then pass them as NSNumbers 
+  */
 + (NSMutableData *) dataWithRootObject:(id) anyObject;
 
+/** Return the data with the encoded object(s) in Hessian format
+  * @return the data with the encoded object(s) in Hessian format
+  */
 - (NSMutableData *) data;
 
 - (void) setClassName:(NSString *)codedName forClass:(Class)cls;
