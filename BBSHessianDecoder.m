@@ -25,7 +25,7 @@
 - (void) endReply;
 - (id) decodeObject;
 - (id) decodeObjectForCode:(uint8_t) code;
-/** \brief utility function to read the length of a string  */
+/** utility function to read the length of a string  */
 - (int) decodeStringLength;
 - (NSString *) decodeXml:(uint8_t) startCode;
 - (NSString *) decodeString:(uint8_t) startCode;
