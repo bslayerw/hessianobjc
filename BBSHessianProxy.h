@@ -15,25 +15,45 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
+
 @class BBSHessianInvocation;
 
 @interface BBSHessianProxy : NSObject {
     @private
     NSURL * serviceUrl;
     NSURLConnection * remoteConnection;
-
 }
-
+/** Initialize with Hessian web service end point.
+  */
 - (id) initWithUrl:(NSURL * ) aServiceUrl;
+
+/** @return the Url service end point */
 - (NSURL *) serviceUrl;
 - (void) setServiceUrl: (NSURL *) aServiceUrl;
 
+/** Call the remote method with the specified parameters synchronously.
+  * This method will return the result value when complete. 
+  * @param methodName is an NSString of the remote method to call at the serviceUrl
+  * @param parameters is an NSArray containing the parameters that will be encoded and passed to the remote method
+  */
 - (id) callSynchronous:(NSString *) methodName
         withParameters:(NSArray *) parameters;
 
+/** Asynchronously call the remote service Url with a BBSHessianInvocation
+  * @see BBSHessianInvocation
+  */
 - (void) callWithInvocation:(BBSHessianInvocation *) anInvocation;
 
+/** The class mapping dictionary is used to map remote to local and local to remote class types.
+  * As an example, passing a NSDictionary as follows: 
+  * [NSDictionary dictionaryWithObject:@"TestObject" forKey:@"com.bluebearstudio.test.TestObject"]
+  * will allow the encoder to send a Objective-C TestObject:NSObject as a Java com.bluebearstudio.test.TestObject.
+  * This will also allow the decoder to decode a Java Java com.bluebearstudio.test.TestObject and instantiate
+  * a local TestObject:NSObject. 
+  */
 + (void) setClassMapping:(NSDictionary *) classMapping;
+
 + (void) setEncoderClassMapping:(NSDictionary *) encoderMapping;
 + (void) setDecoderClassMapping:(NSDictionary *) decoderMapping;
 @end
