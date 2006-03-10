@@ -16,13 +16,14 @@
 // limitations under the License.
 //
 
-// Because a Hessian Map is translated into an NSDictionary which can
-// only old objects this decoder is required to decode NSNumbers / NSValues
-// to their instrinstic types. This class is usually not used directly, but is
-// used by the BBSHessianDecoder.
-
+/** Because a Hessian Map is translated into an NSDictionary which can
+  * only old objects this decoder is required to decode NSNumbers / NSValues
+  * to their instrinstic types. This class is usually not used directly, but is
+  * used by the BBSHessianDecoder.
+  */
 
 @interface BBSHessianMapDecoder: NSCoder {
+    @private
     NSDictionary * hessianMap;
 }
 
