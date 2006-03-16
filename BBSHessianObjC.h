@@ -15,12 +15,13 @@
 // limitations under the License.
 //
 
-
+#import <Foundation/Foundation.h>
 #import <HessianObjC/BBSHessianObjCDefines.h>
 #import <HessianObjC/BBSHessianDecoder.h>
 #import <HessianObjC/BBSHessianEncoder.h>
 #import <HessianObjC/BBSHessianCall.h>
 #import <HessianObjC/BBSHessianResult.h>
 #import <HessianObjC/BBSHessianMapDecoder.h>
+#import <HessianObjC/BBSHessianProxy.h>
 
 
