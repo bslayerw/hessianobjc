@@ -42,6 +42,13 @@
     parameters = someParameters;
 }
 
+/*- (void) setHeader:(id) aHeader forName:(NSString*) theHeaderName {
+   if(!headers) {
+       headers = [[NSMutableDictionary alloc] init];    
+   }
+   [headers setObject:aHeader forKey:theHeaderName];
+}*/
+
 
 - (NSData *) data {
     //lazy creation
@@ -65,17 +72,34 @@
 - (void) dealloc {
     [callData release];
     callData = nil;  
+   /* [headers release];
+    headers = nil;*/
     [super dealloc];
 }
 @end
 
 @implementation BBSHessianCall (PrivateMethods) 
+
 - (void) startCall {
     char call = 'c';
     char char1 = 0x01;
     char char0 = 0x00;
     char m = 'm';
+    /*char H = 'H';
+    //add headers 
     
+    if(headers) {
+        BBSHessianEncoder * headerEncoder = [[[BBSHessianEncoder alloc] initForWritingWithMutableData:callData] autorelease];
+        NSEnumerator * it = [headers keyEnumerator];
+        id currentHeader;
+        while(currentHeader = [it nextObject]) {
+            UInt16 biLen = EndianU16_NtoB([currentHeader length]);
+            [callData appendBytes:&H length:1];
+            [callData appendBytes:&biLen length:sizeof(biLen)];
+            [callData appendBytes:[currentHeader UTF8String] length:[currentHeader length]];              
+            [headerEncoder encodeObject:[headers objectForKey:currentHeader]];
+        }
+    }*/
     [callData appendBytes:&call length:1];    
     [callData appendBytes:&char1 length:1];
     [callData appendBytes:&char0 length:1];
@@ -86,8 +110,6 @@
     [callData appendBytes:&biLen length:sizeof(biLen)];
     [callData appendBytes:[methodName UTF8String] length:len];  
 }
-
-
 
 - (void) endCall {
     char z = 'z';
