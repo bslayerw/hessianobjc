@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		133B3C9509BB81CC0044A2E3 /* BBSHessianObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B3C9409BB81CC0044A2E3 /* BBSHessianObjC.h */; };
-		133B3DD209BB82E60044A2E3 /* BBSHessianObjCDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B3DD109BB82E60044A2E3 /* BBSHessianObjCDefines.h */; };
+		133B3C9509BB81CC0044A2E3 /* BBSHessianObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B3C9409BB81CC0044A2E3 /* BBSHessianObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		133B3DD209BB82E60044A2E3 /* BBSHessianObjCDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B3DD109BB82E60044A2E3 /* BBSHessianObjCDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		133B3E6A09BB883E0044A2E3 /* BBSHessianObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B3E6909BB883E0044A2E3 /* BBSHessianObjC.m */; };
 		133B404609BB94A60044A2E3 /* BBSHessianTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B404309BB94A60044A2E3 /* BBSHessianTest.m */; };
-		133B41E009BC10850044A2E3 /* BBSHessianInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B41DE09BC10850044A2E3 /* BBSHessianInvocation.h */; };
+		133B41E009BC10850044A2E3 /* BBSHessianInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 133B41DE09BC10850044A2E3 /* BBSHessianInvocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		133B41E109BC10850044A2E3 /* BBSHessianInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B41DF09BC10850044A2E3 /* BBSHessianInvocation.m */; };
 		133B4ADC09BD4CB70044A2E3 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B4ADB09BD4CB70044A2E3 /* TestObject.m */; };
-		13FC156609B79C63001909B4 /* BBSHessianDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */; };
+		13FC156609B79C63001909B4 /* BBSHessianDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC155A09B79C63001909B4 /* BBSHessianDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13FC156709B79C63001909B4 /* BBSHessianDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC155B09B79C63001909B4 /* BBSHessianDecoder.m */; };
-		13FC156809B79C63001909B4 /* BBSHessianEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC155C09B79C63001909B4 /* BBSHessianEncoder.h */; };
+		13FC156809B79C63001909B4 /* BBSHessianEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC155C09B79C63001909B4 /* BBSHessianEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13FC156909B79C63001909B4 /* BBSHessianEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC155D09B79C63001909B4 /* BBSHessianEncoder.m */; };
-		13FC156E09B79C63001909B4 /* BBSHessianProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC156209B79C63001909B4 /* BBSHessianProxy.h */; };
+		13FC156E09B79C63001909B4 /* BBSHessianProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC156209B79C63001909B4 /* BBSHessianProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13FC156F09B79C63001909B4 /* BBSHessianProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC156309B79C63001909B4 /* BBSHessianProxy.m */; };
-		13FC157009B79C63001909B4 /* BBSHessianResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC156409B79C63001909B4 /* BBSHessianResult.h */; };
+		13FC157009B79C63001909B4 /* BBSHessianResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC156409B79C63001909B4 /* BBSHessianResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13FC157109B79C63001909B4 /* BBSHessianResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC156509B79C63001909B4 /* BBSHessianResult.m */; };
 		13FC16E509B7A887001909B4 /* HessianObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1354499E09AE9142001F2B25 /* HessianObjC.framework */; };
-		13FC1AF509B8086B001909B4 /* BBSHessianMapDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC1AF309B8086B001909B4 /* BBSHessianMapDecoder.h */; };
+		13FC1AF509B8086B001909B4 /* BBSHessianMapDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC1AF309B8086B001909B4 /* BBSHessianMapDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13FC1AF609B8086B001909B4 /* BBSHessianMapDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC1AF409B8086B001909B4 /* BBSHessianMapDecoder.m */; };
-		13FC1C6109B92532001909B4 /* BBSHessianCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC1C5F09B92532001909B4 /* BBSHessianCall.h */; };
+		13FC1C6109B92532001909B4 /* BBSHessianCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 13FC1C5F09B92532001909B4 /* BBSHessianCall.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13FC1C6209B92532001909B4 /* BBSHessianCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FC1C6009B92532001909B4 /* BBSHessianCall.m */; };
 /* End PBXBuildFile section */
 
