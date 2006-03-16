@@ -25,7 +25,7 @@
     NSMutableData * callData;
     NSString * methodName;
     NSArray * parameters;
-    NSMutableDictionary * headers;
+    /*NSMutableDictionary * headers;*/
 }
 
 /** initialize a Hessian call with a remote method name. 
@@ -54,7 +54,7 @@
   */
 - (void) setParameters: (NSArray *) someParameters;
 
-- (void) setHeader:(id) aHeader forName:(NSString*) theHeaderName;
+/*- (void) setHeader:(id) aHeader forName:(NSString*) theHeaderName;*/
 
 /** Return the method name the call was instantiated with.
   * @return the method name the call was instantiated with.
