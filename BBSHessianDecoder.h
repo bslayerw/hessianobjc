@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+#import <Foundation/Foundation.h>
 /** BBSHessianDecoder is responsible to decoding Hessian binary protocol encoded objects.
   * If class mappings are specified those will also be used to instantiate to appropriate local class instance.
   */
