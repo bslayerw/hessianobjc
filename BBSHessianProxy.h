@@ -19,6 +19,10 @@
 
 @class BBSHessianInvocation;
 
+/** BBSHessianProxy acts as a facade to the underlying transport and encoder / decoder framework.
+  * This proxy class is responsible to encode remote method calls, making the call and then decoding
+  * remote method returns. 
+  */
 @interface BBSHessianProxy : NSObject {
     @private
     NSURL * serviceUrl;
