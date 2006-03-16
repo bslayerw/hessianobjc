@@ -15,6 +15,8 @@
 // limitations under the License.
 //
 
+
+
 #ifndef BBS_HESSIAN_OBJC_DEFINES 
 #define BBS_HESSIAN_OBJC_DEFINES
 
@@ -23,6 +25,8 @@
 #else
     #define BBS_HESSIAN_OBJC_EXTERN extern
 #endif
+
+#import <Foundation/Foundation.h>
 
 BBS_HESSIAN_OBJC_EXTERN NSString * BBSHessianClassNameKey;
 BBS_HESSIAN_OBJC_EXTERN NSString * BBSHessianObjCError;
