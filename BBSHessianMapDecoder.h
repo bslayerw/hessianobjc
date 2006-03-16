@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+#import <Foundation/Foundation.h>
 /** Because a Hessian Map is translated into an NSDictionary which can
   * only old objects this decoder is required to decode NSNumbers / NSValues
   * to their instrinstic types. This class is usually not used directly, but is
