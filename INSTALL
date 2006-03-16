@@ -1,0 +1,17 @@
+HessianObjC 
+Copyright Byron Wright, Blue Bear Studio
+
+HessianObjC Installation Instructions:
+
+1. Requirements
+
+* Currently the HessianObjC framework is built as a univeral binary target for Mac OS X Tiger using XCode 2.2.
+
+2. Install
+
+* Either unarchive and drop the HessianobjC.framework in /Library/Frameworks (recommended) or ~/Library/Frameworks
+* IMPORTANT, when using XCode with SDK's (when using the Univeral Binary SDK for example) you will have to manually add the path where you install the framework to your "framework search paths". The easiest way to do this is to double click on your project file in the "Group & Files" browser. Be sure to change the confguration to "All Configurations", go to "All Settings" and change the value for "Framework Search Paths" : /Library/Frameworks/ (if that is where you installed it). If you already have values for this setting then append the path.
+
+3. Use
+
+* Same as another other framework, Apple has extensive documentation on this (http://developer.apple.com/documentation/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/en.lproj/01_04_pr_add_files/chapter_7_section_5.html)
