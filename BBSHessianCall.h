@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+#import <Foundation/Foundation.h>
 /** Encapsulates a Hessian call. BBSHessianCall is responsible
   * for encoding a Hessian call and all it's parameters.
   */
@@ -25,6 +25,7 @@
     NSMutableData * callData;
     NSString * methodName;
     NSArray * parameters;
+    NSMutableDictionary * headers;
 }
 
 /** initialize a Hessian call with a remote method name. 
@@ -52,6 +53,8 @@
   * to the remote service.
   */
 - (void) setParameters: (NSArray *) someParameters;
+
+- (void) setHeader:(id) aHeader forName:(NSString*) theHeaderName;
 
 /** Return the method name the call was instantiated with.
   * @return the method name the call was instantiated with.
