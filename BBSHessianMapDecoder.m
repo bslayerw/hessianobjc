@@ -35,13 +35,14 @@
         return [obj boolValue];
     }
     else {
-        NSLog(@"excepted an NSNumber");
+        NSLog(@"error:[BBSHessianMapDecoder decodeBoolForKey] expected an NSNumber for key [%@] but got value [%@]",key,obj);
     }
     return NO;
 }
 //TODO:implement
 - (const uint8_t *) decodeBytesForKey:(NSString *) key returnedLength:(unsigned *) lengthp {
-    NSLog(@"TODO:implement this method BBSHessianMapDecoder:- (const uint8_t *) decodeBytesForKey:(NSString *) key returnedLength:(unsigned *) lengthp");
+    #pragma unused(key)
+    NSLog(@"error:[BBSHessianMapDecoder decodeBytesForKey] not implemented [%@]",key);
     *lengthp = 0;
     return NULL;    
 }
@@ -52,7 +53,7 @@
         return [obj doubleValue];
     }
     else {
-        NSLog(@"excepted an NSNumber");
+        NSLog(@"error:[BBSHessianMapDecoder decodeDoubleForKey] expected an NSNumber for key [%@] but got value [%@]",key,obj);
     }
     return 0.0;
 }
@@ -63,7 +64,7 @@
         return [obj floatValue];
     }
     else {
-        NSLog(@"excepted an NSNumber");
+        NSLog(@"error:[BBSHessianMapDecoder decodeFloatForKey] expected an NSNumber for key [%@] but got value [%@]",key,obj);
     }
     return 0.0f;
 }
@@ -74,7 +75,7 @@
         return [obj intValue];
     }
     else {
-        NSLog(@"excepted an NSNumber");
+        NSLog(@"error:[BBSHessianMapDecoder decodeInt32ForKey] expected an NSNumber for key [%@] but got value [%@]",key,obj);
     }
     return 0;
 }
@@ -85,7 +86,7 @@
         return [obj longLongValue];
     }
     else {
-        NSLog(@"excepted an NSNumber");
+        NSLog(@"error:[BBSHessianMapDecoder decodeInt64ForKey] expected an NSNumber for key [%@] but got value [%@]",key,obj);
     }
     return 0;
 }
@@ -96,7 +97,7 @@
         return [obj intValue];
     }
     else {
-        NSLog(@"excepted an NSNumber");
+        NSLog(@"error:[BBSHessianMapDecoder decodeIntForKey] expected an NSNumber for key [%@] but got value [%@]",key,obj);
     }
     return 0;
 }
