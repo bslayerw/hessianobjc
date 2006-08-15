@@ -25,6 +25,7 @@
 }
 
 
+
 /** Initialize with data that all encoded objects will be appened to.
   * This method usually isn't used directly. 
   * @param data is NSMutableData that all encoded objects will be appended to.
