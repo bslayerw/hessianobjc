@@ -19,3 +19,5 @@
 
 NSString * BBSHessianClassNameKey = @"hessianClassName";
 NSString * BBSHessianObjCError    = @"BBSHessianObjCDomain";
+
+
