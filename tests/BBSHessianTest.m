@@ -17,12 +17,8 @@
 //
 
 #import "BBSHessianTest.h"
-#import "BBSHessianCall.h"
-#import "BBSHessianDecoder.h"
-#import "BBSHessianEncoder.h"
 #import "TestObject.h"
-
-#import "BBSHessianProxy.h"
+#import "BBSHessianObjC.h"
 
 @implementation BBSHessianTest
 
@@ -35,8 +31,13 @@
 
 - (void) testCoders {
     TestObject * obj = [[[TestObject alloc] init] autorelease];
+    
     [obj setFname:@"Byron"];
     [obj setLname:@"Wright"];
+    [obj addElementToTestArray:@"Test1"];
+    [obj addElementToTestArray:@"Test2"];
+    [obj addElementToTestArray:@"Test3"];
+    
     NSMutableData * hData = [NSMutableData data];
     BBSHessianEncoder * encoder = [[[BBSHessianEncoder alloc] initForWritingWithMutableData:hData] autorelease];
     [encoder encodeObject:obj];
@@ -60,7 +61,7 @@
 }
 
 - (void) testCallNull {    
-    NSURL * url = [NSURL URLWithString:@"http://www.caucho.com/hessian/test/basic"];
+    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"nullCall" withParameters:nil];
     NSLog(@"testCallNull result = %@",result);
@@ -68,7 +69,7 @@
 }
 
 - (void) testHello {
-    NSURL * url = [NSURL URLWithString:@"http://www.caucho.com/hessian/test/basic"];
+    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"hello" withParameters:nil];
     STAssertNotNil(result,@"test hello did not return a valid value");
@@ -77,7 +78,7 @@
 }
 
 - (void) testSubtract {
-    NSURL * url = [NSURL URLWithString:@"http://www.caucho.com/hessian/test/basic"];
+    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     NSNumber * a = [NSNumber numberWithInt:1130];
     NSNumber * b = [NSNumber numberWithInt:551];
@@ -86,7 +87,7 @@
 }
 
 - (void) testEcho {
-    NSURL * url = [NSURL URLWithString:@"http://www.caucho.com/hessian/test/basic"];
+    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
         NSMutableDictionary * encodeMapping = [NSMutableDictionary dictionary];
@@ -135,12 +136,22 @@
 
 - (void) testFault {
 
-    NSURL * url = [NSURL URLWithString:@"http://www.caucho.com/hessian/test/basic"];
+    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"fault" withParameters:nil];
     STAssertNotNil(result,@"fault test return nil value");
     STAssertTrue([result isKindOfClass:[NSError class]],@"fault test returned did not return an error");
     NSLog(@"test fault return value = %@",result);
 }
+
+- (void) testVariableLengthList {
+    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
+    BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
+    id result = [proxy callSynchronous:@"testList" withParameters:nil];
+    STAssertNotNil(result,@"\"list\" test return nil value");
+    STAssertFalse([result isKindOfClass:[NSError class]],@"\"list\" test returned did not return an error");
+    NSLog(@"test testVariableLengthList return value = %@",result);
+}
+
 
 @end
