@@ -21,6 +21,12 @@
 
 @implementation TestObject
 
+- (id) init {
+    self = [super init];
+    testArray = [[NSMutableArray alloc] init];
+    return self;
+}
+
 - (NSString *) fname {
     return fname; 
 }
@@ -39,21 +45,30 @@
     lname = aLname;
 }
 
+- (void) addElementToTestArray:(NSString *) aStr {
+    [testArray addObject:aStr];
+}
+
 - (void) encodeWithCoder: (NSCoder *) coder {
     [super init];
     [coder encodeObject: [self fname] forKey: @"fname"];
     [coder encodeObject: [self lname] forKey: @"lname"];
+    [coder encodeObject:testArray forKey:@"testArray"];
 }
 
 - (id) initWithCoder: (NSCoder *) coder {    
     [self setFname: [coder decodeObjectForKey: @"fname"]];
     [self setLname: [coder decodeObjectForKey: @"lname"]];
+    testArray = [[coder decodeObjectForKey: @"testArray"] retain];
+   
     return self;
 }
 
 - (void) dealloc {
     [self setFname: nil];
     [self setLname: nil];
+    [testArray release];
+    testArray = nil;
     [super dealloc];
 }
 
