@@ -28,6 +28,6 @@
 - (void) testSubtract;
 - (void) testEcho;
 - (void) testFault;
-
+- (void) testVariableLengthList;
 
 @end
