@@ -273,21 +273,28 @@ static NSMutableDictionary * gClassMapping;
     NSMutableArray * array = [NSMutableArray array];
     uint8_t objectTag = 'e';
     if([dataInputStream hasBytesAvailable]) {    
+        //type and length might be available, accord to the spec
+        //type comes first then the length.
         [dataInputStream read:&objectTag maxLength:1]; 
         if(objectTag == 't') {
             //decode the type of list, we don't really care about this
+            //because we are using an NSArray
             NSString * type = [self decodeString:'S'];  
+            //if type exists then check for length also
+            [dataInputStream read:&objectTag maxLength:1];
             #pragma unused (type)            
         }  
-        [dataInputStream read:&objectTag maxLength:1]; 
+        
         if(objectTag == 'l') {
-            //length of object in reply, we don't really care about this because we're creating an NSArray
+            //length of object in reply, gobble it up because we don't really 
+            //care about this because we're creating an NSArray
             NSNumber * len = [self decodeInt];
             #pragma unused (len)
+            //length exists, read in the next tag
+            [dataInputStream read:&objectTag maxLength:1]; 
         }
-        [dataInputStream read:&objectTag maxLength:1]; 
-        
-         while(objectTag != 'z' && [dataInputStream hasBytesAvailable]) {  
+                
+        while(objectTag != 'z' && [dataInputStream hasBytesAvailable]) {  
             id obj = [self decodeObjectForCode:objectTag];
             if(obj) { 
                 [array addObject:obj];
