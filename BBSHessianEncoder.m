@@ -178,7 +178,7 @@ static NSMutableDictionary * gClassMapping;
         [callData appendBytes:&z length:1];
     }
     else {
-        NSLog(@"attempting to encode an object that does not conform to NSCoding");
+        NSLog(@"attempting to encode an object that does not conform to NSCoding. %@", [anObject class]);
     }
 }
 
