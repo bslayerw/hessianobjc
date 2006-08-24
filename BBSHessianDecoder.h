@@ -23,6 +23,7 @@
     @private
     NSInputStream * dataInputStream;
     NSMutableDictionary * classMapping;
+    NSMutableArray * refArray;
 }
 
 /** Static method that decodes an object encoded in Hessian binary protocol and returns the object value.
