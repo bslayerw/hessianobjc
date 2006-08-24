@@ -29,7 +29,8 @@
 - (NSString *) decodeString:(uint8_t) startCode;
 - (NSString *) decodeStringChunk;
 - (NSNumber *) decodeInt;
-- (NSDictionary *) decodeMap;
+/** Return an NSDictionary or a class instance if a mapping for this "map" is available */
+- (id) decodeMap;
 - (NSArray * ) decodeList;
 - (NSNumber *) decodeLong;
 - (NSNumber *) decodeDouble;
@@ -37,7 +38,7 @@
 - (NSData *) decodeByteChunks;
 - (NSData *) decodeBytes;
 - (NSError *) decodeFault;
-- (NSNumber *) decodeRef;
+- (id) decodeRef;
 
 @end
 
@@ -52,6 +53,7 @@ static NSMutableDictionary * gClassMapping;
 - (id) init {
     if((self = [super init]) != nil) {
         classMapping = [[NSMutableDictionary dictionary] retain];
+        refArray = [[NSMutableArray array] retain];
     }
     return self;
 }
@@ -74,15 +76,6 @@ static NSMutableDictionary * gClassMapping;
 - (id) decodedObject {
     id obj = nil;
     obj = [self decodeObject];
-    //if it's a map and has a mapping associated with it then try 
-    //and instiate it's class. The class needs to be in the runtime
-    if([obj isKindOfClass:[NSDictionary class]]) {
-        Class objClass = NSClassFromString([obj objectForKey:BBSHessianClassNameKey]);
-        if(objClass) { 
-            BBSHessianMapDecoder * mapDecoder = [[[BBSHessianMapDecoder alloc] initForReadingWithDictionary:obj] autorelease];
-            return [[[objClass alloc] initWithCoder:mapDecoder] autorelease];
-        }
-    }    
     return obj;
 }
 
@@ -112,6 +105,8 @@ static NSMutableDictionary * gClassMapping;
     classMapping = nil;
     [dataInputStream release];
     dataInputStream = nil;
+    [refArray release];
+    refArray = nil;
     [super dealloc];
 }
 @end
@@ -224,8 +219,9 @@ static NSMutableDictionary * gClassMapping;
     return nil;
 }
 
-- (NSDictionary *) decodeMap {
+- (id) decodeMap {
     NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    Class mappedClass = nil;
     uint8_t objectTag = 'e';
     if([dataInputStream hasBytesAvailable]) {    
         [dataInputStream read:&objectTag maxLength:1];  
@@ -234,7 +230,7 @@ static NSMutableDictionary * gClassMapping;
             //if we have a class mapping for this then             
             NSString * type = [self decodeString:'S'];                 
             if(type != nil && [type length] > 0) {
-                Class mappedClass = [self classForClassName:type];
+                mappedClass  = [self classForClassName:type];
                 if(!mappedClass) { //try the global mapping
                     mappedClass = [BBSHessianDecoder classForClassName:type];
                 }
@@ -242,7 +238,10 @@ static NSMutableDictionary * gClassMapping;
                     [dict setObject:NSStringFromClass(mappedClass) forKey:BBSHessianClassNameKey];
                 }
                 else {
+                     // not a mapped class. remember hessian class name
                     [dict setObject:type forKey:BBSHessianClassNameKey];
+                    // remember object for later refs
+                    [refArray addObject:dict];
                 }
             }
         }         
@@ -261,6 +260,15 @@ static NSMutableDictionary * gClassMapping;
             }
             [dataInputStream read:&objectTag maxLength:1];  
         }
+        
+        if(mappedClass) {
+            //a mapped class, user map decoder to init object
+            BBSHessianMapDecoder * mapDecoder = [[[BBSHessianMapDecoder alloc] initForReadingWithDictionary:dict] autorelease];
+            id obj = [[[mappedClass alloc] initWithCoder:mapDecoder] autorelease];
+             // remember object for later refs
+            [refArray addObject:obj];
+            return obj;
+        }
         return dict;
     }
     else {
@@ -271,6 +279,7 @@ static NSMutableDictionary * gClassMapping;
 
 - (NSArray * ) decodeList {
     NSMutableArray * array = [NSMutableArray array];
+    [refArray addObject:array];
     uint8_t objectTag = 'e';
     if([dataInputStream hasBytesAvailable]) {    
         //type and length might be available, accord to the spec
@@ -460,8 +469,11 @@ static NSMutableDictionary * gClassMapping;
 
 }
 
-- (NSNumber *) decodeRef {
-    return [self decodeInt];
+- (id) decodeRef {    
+    int ref = [[self decodeInt] intValue];
+    NSLog(@"WARN: refs are not currently supported, trying to decode ref at [%i] object [%@]",ref,[refArray objectAtIndex:ref]);
+    return nil;
+    /*return [refArray objectAtIndex:ref] ;    */
 }
 
 - (int) decodeStringLength {
