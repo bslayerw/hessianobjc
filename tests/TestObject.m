@@ -23,7 +23,6 @@
 
 - (id) init {
     self = [super init];
-    testArray = [[NSMutableArray alloc] init];
     return self;
 }
 
@@ -45,30 +44,34 @@
     lname = aLname;
 }
 
-- (void) addElementToTestArray:(NSString *) aStr {
-    [testArray addObject:aStr];
+
+- (TestObject *) child {
+    return child; 
+}
+- (void) setChild: (TestObject *) aChild {
+    [aChild retain];
+    [child release];
+    child = aChild;
 }
 
 - (void) encodeWithCoder: (NSCoder *) coder {
     [super init];
     [coder encodeObject: [self fname] forKey: @"fname"];
     [coder encodeObject: [self lname] forKey: @"lname"];
-    [coder encodeObject:testArray forKey:@"testArray"];
+    [coder encodeObject:[self child] forKey:@"child"];
 }
 
 - (id) initWithCoder: (NSCoder *) coder {    
     [self setFname: [coder decodeObjectForKey: @"fname"]];
     [self setLname: [coder decodeObjectForKey: @"lname"]];
-    testArray = [[coder decodeObjectForKey: @"testArray"] retain];
-   
+    [self setChild: [coder decodeObjectForKey: @"child"]];
     return self;
 }
 
 - (void) dealloc {
     [self setFname: nil];
     [self setLname: nil];
-    [testArray release];
-    testArray = nil;
+    [self setChild: nil];    
     [super dealloc];
 }
 
