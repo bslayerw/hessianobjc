@@ -24,7 +24,7 @@
 
 
 + (void) initialize {
-    NSDictionary * classMapping = [NSDictionary dictionaryWithObject:@"TestObject" forKey:@"com.bluebearstudio.test.TestObject"];
+    NSDictionary * classMapping = [NSDictionary dictionaryWithObject:@"TestObject" forKey:@"com.sbs.colledia.hessian.test.TestObject"];
     [BBSHessianProxy setClassMapping:classMapping];
 
 }
@@ -34,9 +34,6 @@
     
     [obj setFname:@"Byron"];
     [obj setLname:@"Wright"];
-    [obj addElementToTestArray:@"Test1"];
-    [obj addElementToTestArray:@"Test2"];
-    [obj addElementToTestArray:@"Test3"];
     
     NSMutableData * hData = [NSMutableData data];
     BBSHessianEncoder * encoder = [[[BBSHessianEncoder alloc] initForWritingWithMutableData:hData] autorelease];
@@ -90,7 +87,7 @@
     NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
-        NSMutableDictionary * encodeMapping = [NSMutableDictionary dictionary];
+    NSMutableDictionary * encodeMapping = [NSMutableDictionary dictionary];
     NSMutableData * mappingData = [NSMutableData data];
     NSKeyedArchiver * archiver = [[[NSKeyedArchiver alloc] initForWritingWithMutableData:mappingData] autorelease];
     [archiver setOutputFormat:NSPropertyListXMLFormat_v1_0];
@@ -117,10 +114,7 @@
     [aDict setObject:@"test string for TestObject" forKey:@"testValue"];
     [aDict setObject:anInt forKey:@"testInt"];
     [aDict setObject:aLong forKey:@"testLong"];
-    /*TestObject * obj = [[[TestObject alloc] init] autorelease];
-    [obj setFname:@"Byron"];
-    [obj setLname:@"Wright"];
-    [aDict setObject:obj forKey:@"me"];*/
+
     id result = [proxy callSynchronous:@"echo" withParameters:[NSArray arrayWithObjects:aDict,nil]];
     STAssertNotNil(result,@"echo failed to return object");
     STAssertNotNil([result objectForKey:@"testArray"],@"test array was not echoed");
@@ -131,11 +125,26 @@
     STAssertNotNil([result objectForKey:@"testInt"],@"test testInt was not echoed");
     STAssertNotNil([result objectForKey:@"testLong"],@"test testLong was not echoed");
    // STAssertNotNil([result objectForKey:@"me"],@"test me was not echoed");
+   
+    TestObject * aTestObj = [[[TestObject alloc] init] autorelease];
+    [aTestObj setFname:@"Byron"];
+    [aTestObj setLname:@"Wright"];
+    TestObject * child = [[[TestObject alloc] init] autorelease];
+    [child setFname:@"Tyler"];
+    [child setLname:@"Wright"];
+    [aTestObj setChild:child];
+    
+    result = [proxy callSynchronous:@"echo" withParameters:[NSArray arrayWithObjects:aTestObj,nil]];
+    STAssertNotNil(result,@"echo failed to return object");
+    STAssertNotNil([result fname],@"fname property was not echoed");
+    STAssertNotNil([result lname],@"lname property was not echoed");
+    STAssertNotNil([result child],@"child property was not echoed");
+    STAssertNotNil([[result child] fname],@"child fname property was not echoed");
+    STAssertNotNil([[result child] lname],@"child lname property was not echoed");
 }
 
 
 - (void) testFault {
-
     NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"fault" withParameters:nil];
@@ -144,14 +153,24 @@
     NSLog(@"test fault return value = %@",result);
 }
 
-- (void) testVariableLengthList {
+/*- (void) testRefs {
+    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
+    BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
+    id result = [proxy callSynchronous:@"refs" withParameters:nil];
+    STAssertNotNil(result,@"refs test return nil value");
+    STAssertTrue([result isKindOfClass:[NSError class]],@"refs test returned did not return an error");
+    NSLog(@"test fault return value = %@",result);
+
+}*/
+
+/*- (void) testVariableLengthList {
     NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"testList" withParameters:nil];
     STAssertNotNil(result,@"\"list\" test return nil value");
     STAssertFalse([result isKindOfClass:[NSError class]],@"\"list\" test returned did not return an error");
     NSLog(@"test testVariableLengthList return value = %@",result);
-}
+}*/
 
 
 @end
