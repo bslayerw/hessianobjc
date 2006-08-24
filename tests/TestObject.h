@@ -23,7 +23,7 @@
     @private
     NSString * fname;
     NSString * lname;
-    NSMutableArray * testArray;
+    TestObject * child;
 }
 
 - (NSString *) fname;
@@ -32,6 +32,7 @@
 - (NSString *) lname;
 - (void) setLname: (NSString *) aLname;
 
-- (void) addElementToTestArray:(NSString *) aStr;
+- (TestObject *) child;
+- (void) setChild: (TestObject *) aChild;
 
 @end
