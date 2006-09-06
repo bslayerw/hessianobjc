@@ -356,6 +356,7 @@ static NSMutableDictionary * gClassMapping;
         //now add chunk        
         NSString * stringChunk = [anXmlString substringWithRange:NSMakeRange(currentPos,0x8000)];
         [callData appendBytes:[stringChunk UTF8String] length:[stringChunk length]]; 
+        
         currentPos += 0x8000;
         currentLen -= 0x8000;
     }    
@@ -376,11 +377,7 @@ static NSMutableDictionary * gClassMapping;
 }
 
 - (void) encodeData:(NSData *) someData {
-    [self encodeBytes:[someData bytes] length:[someData length]];
-}
-
-- (void) encodeBytes:(const uint8_t *) bytesp length:(unsigned)lenv {
-    unsigned currentLen = lenv;   
+    unsigned currentLen = [someData length];   
     unsigned currentPos = 0;  
     char b = 'b';
     char B = 'B';
@@ -390,14 +387,20 @@ static NSMutableDictionary * gClassMapping;
         UInt16 biLen = EndianU16_NtoB(0x8000);
         [callData appendBytes:&biLen length:sizeof(biLen)];
         //now add chunk        
-        [callData appendBytes:bytesp+currentPos length:0x8000];
+        NSData * dataChunk = [someData subdataWithRange:NSMakeRange(currentPos,0x8000)];
+        [callData appendBytes:[dataChunk bytes] length:[dataChunk length]];
         currentPos += 0x8000;
         currentLen -= 0x8000;
     }    
     [callData appendBytes:&B length:1];
     UInt16 biLen = EndianU16_NtoB(currentLen);
     [callData appendBytes:&biLen length:sizeof(biLen)];
-    [callData appendBytes:bytesp+(lenv-currentPos) length:currentLen];
+    NSData * dataChunk = [someData subdataWithRange:NSMakeRange(currentPos,currentLen)];
+    [callData appendBytes:[dataChunk bytes] length:[dataChunk length]];
+}
+
+- (void) encodeBytes:(const uint8_t *) bytesp length:(unsigned)lenv {
+    [self encodeData:[NSData dataWithBytes:bytesp length:lenv]];
 }
 
 @end
