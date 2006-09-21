@@ -194,6 +194,7 @@ static NSMutableDictionary * gClassMapping;
         return;
     }
     Class objClass = [anyObject class];
+    
     NSString * classString = NSStringFromClass(objClass);
     //TODO: research the posibilities of a more robust way of introspect class clusters
     if([classString isEqualToString:[[NSConstantString class] description]] ||
@@ -213,7 +214,8 @@ static NSMutableDictionary * gClassMapping;
     else if([classString isEqualToString:@"NSCFDictionary"]) {
         [self encodeDictionary:anyObject];
     }
-    else if([classString isEqualToString:@"NSCFDate"]) {
+    else if([classString isEqualToString:@"NSCFDate"] || 
+            [anyObject isKindOfClass:[NSCalendarDate class]]) {
         [self encodeDate:anyObject];
     }
     else  if([classString isEqualToString:@"NSCFArray"]) {
