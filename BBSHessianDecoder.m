@@ -220,7 +220,9 @@ static NSMutableDictionary * gClassMapping;
 }
 
 - (id) decodeMap {
-    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    id dict = [NSMutableDictionary dictionary];
+    //add the pointer to the ref array and not the actually value. 
+    [refArray addObject:[NSValue valueWithPointer:dict]];
     Class mappedClass = nil;
     uint8_t objectTag = 'e';
     if([dataInputStream hasBytesAvailable]) {    
@@ -240,8 +242,6 @@ static NSMutableDictionary * gClassMapping;
                 else {
                      // not a mapped class. remember hessian class name
                     [dict setObject:type forKey:BBSHessianClassNameKey];
-                    // remember object for later refs
-                    [refArray addObject:dict];
                 }
             }
         }         
@@ -264,9 +264,7 @@ static NSMutableDictionary * gClassMapping;
         if(mappedClass) {
             //a mapped class, user map decoder to init object
             BBSHessianMapDecoder * mapDecoder = [[[BBSHessianMapDecoder alloc] initForReadingWithDictionary:dict] autorelease];
-            id obj = [[[mappedClass alloc] initWithCoder:mapDecoder] autorelease];
-             // remember object for later refs
-            [refArray addObject:obj];
+            id obj = [[[mappedClass alloc] initWithCoder:mapDecoder] autorelease];            
             return obj;
         }
         return dict;
@@ -279,7 +277,7 @@ static NSMutableDictionary * gClassMapping;
 
 - (NSArray * ) decodeList {
     NSMutableArray * array = [NSMutableArray array];
-    [refArray addObject:array];
+    [refArray addObject:[NSValue valueWithPointer:array]];
     uint8_t objectTag = 'e';
     if([dataInputStream hasBytesAvailable]) {    
         //type and length might be available, accord to the spec
@@ -459,10 +457,14 @@ static NSMutableDictionary * gClassMapping;
     }
 
     NSDictionary * details = [self decodeMap];   
+    //for now remove cause value, in Java this always seems to be a ref back to the root exception
+    //this causes problems when callign descriptions on the fault dictionary because it causes an infinit loop
+    NSMutableDictionary * detailsMutable = [details mutableCopy];
+    [detailsMutable removeObjectForKey:@"cause"];
     NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@:%@",codeMessage,message]
                                                               forKey:NSLocalizedDescriptionKey];
      
-    [userInfo setObject:details forKey:NSUnderlyingErrorKey];
+    [userInfo setObject:detailsMutable forKey:NSUnderlyingErrorKey];
     return [NSError errorWithDomain:BBSHessianObjCError
                                code:BBSHessianProtocolError
                            userInfo:userInfo];
@@ -471,9 +473,7 @@ static NSMutableDictionary * gClassMapping;
 
 - (id) decodeRef {    
     int ref = [[self decodeInt] intValue];
-    NSLog(@"WARN: refs are not currently supported, trying to decode ref at [%i] object [%@]",ref,[refArray objectAtIndex:ref]);
-    return nil;
-    /*return [refArray objectAtIndex:ref] ;    */
+    return [[refArray objectAtIndex:ref] pointerValue];
 }
 
 - (int) decodeStringLength {
