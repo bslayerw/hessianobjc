@@ -4,7 +4,9 @@
 //
 //  Created by Byron Wright on 3/13/06.
 //  Copyright 2006 Blue Bear Studio. All rights reserved.
-//
+//  At the time of this writing the url to the test service at Caucho.com was unreachable.
+// "http://www.caucho.com/hessian/test/basic.
+// If it's still unreachable please point to your dev environment if you have one :)
 #import <HessianObjC/BBSHessianObjC.h>
 #import "AppController.h"
 
