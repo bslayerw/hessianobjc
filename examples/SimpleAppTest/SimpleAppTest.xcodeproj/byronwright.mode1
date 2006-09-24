@@ -239,8 +239,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -265,7 +263,7 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
-								<real>281</real>
+								<real>271</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
@@ -295,7 +293,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {281, 662}}</string>
+							<string>{{0, 0}, {271, 662}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -307,11 +305,11 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {298, 680}}</string>
+						<string>{{0, 0}, {288, 680}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
-							<real>281</real>
+							<real>271</real>
 						</array>
 						<key>RubberWindowFrame</key>
 						<string>-1537 277 1114 721 -1680 0 1680 1050 </string>
@@ -319,12 +317,14 @@
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
 					<key>Proportion</key>
-					<string>298pt</string>
+					<string>288pt</string>
 				</dict>
 				<dict>
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -342,7 +342,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>13F8A8A809CA09950042C9A3</string>
+										<string>13F8A98109CB067E0042C9A3</string>
 										<key>history</key>
 										<array>
 											<string>13F3F04309C606D6005F70F7</string>
@@ -410,7 +410,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {811, 482}}</string>
+								<string>{{0, 0}, {821, 482}}</string>
 								<key>RubberWindowFrame</key>
 								<string>-1537 277 1114 721 -1680 0 1680 1050 </string>
 							</dict>
@@ -430,7 +430,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 487}, {811, 193}}</string>
+								<string>{{0, 487}, {821, 193}}</string>
 								<key>RubberWindowFrame</key>
 								<string>-1537 277 1114 721 -1680 0 1680 1050 </string>
 							</dict>
@@ -441,7 +441,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>811pt</string>
+					<string>821pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -577,7 +577,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>164235669.20398501</real>
+	<real>164300414.29742</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -592,9 +592,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>13F8A7A409C8DA650042C9A3</string>
 		<string>/Users/byronwright/Projects/hessianobjc/trunk/examples/SimpleAppTest/SimpleAppTest.xcodeproj</string>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
 	</array>
 	<key>WindowString</key>
 	<string>-1537 277 1114 721 -1680 0 1680 1050 </string>
@@ -689,7 +689,7 @@
 			<key>WindowToolGUID</key>
 			<string>13F8A7A409C8DA650042C9A3</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1061,7 +1061,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C0AD2B3069F1EA900FABCE6</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

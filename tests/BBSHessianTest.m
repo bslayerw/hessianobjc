@@ -55,6 +55,11 @@
     id anotherDecodedObject = [BBSHessianDecoder decodedObjectWithData:encodedObject];
     NSLog(@"anotherDecodedObject = %@",anotherDecodedObject);
     STAssertNotNil(anotherDecodedObject,@"failed to decode object");
+    
+   /* NSData * imgIn = [NSData dataWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.jpg"];
+    NSMutableData * encodedImgData = [BBSHessianEncoder dataWithRootObject:imgIn];
+    NSData * imgOut = [BBSHessianDecoder decodedObjectWithData:encodedImgData];
+    [imgOut writeToFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.out.jpg" atomically:YES];*/
 }
 
 - (void) testCallNull {    
@@ -99,6 +104,7 @@
     NSNumber * aDouble = [NSNumber numberWithDouble:123123.5132];
     NSNumber * aLong = [NSNumber numberWithLongLong:2112312313];
     NSDate * now = [NSDate date];
+    NSCalendarDate * cal = [NSCalendarDate calendarDate];
     NSNumber * aBool = [NSNumber numberWithBool:YES];
     NSMutableDictionary * aDict = [NSMutableDictionary dictionary];
     NSMutableArray * anArray = [NSMutableArray array];
@@ -110,11 +116,23 @@
     [aDict setObject:anArray forKey:@"testArray"];
     [aDict setObject:aDouble forKey:@"testDouble"];
     [aDict setObject:now forKey:@"testDate"];
+    [aDict setObject:cal forKey:@"cal"];
     [aDict setObject:aBool forKey:@"testBool"];
     [aDict setObject:@"test string for TestObject" forKey:@"testValue"];
     [aDict setObject:anInt forKey:@"testInt"];
     [aDict setObject:aLong forKey:@"testLong"];
-
+    //test encoding and decoding of NSData
+    NSString * bigString = [NSString stringWithContentsOfFile:@"/Users/byronwright/Documents/Tyler Playing With Water.xml"];
+    NSLog(@"bigString = %@",bigString);
+    [aDict setObject:bigString forKey:@"testBigString"];
+    
+    NSData * testData = [NSData dataWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.jpg"];
+    if(testData == nil) {
+        NSLog(@"test data is nil");
+    }
+    NSLog(@"test test test");
+   /// NSLog(@"testData = %@",testData);
+    [aDict setObject:testData forKey:@"testData"];
     id result = [proxy callSynchronous:@"echo" withParameters:[NSArray arrayWithObjects:aDict,nil]];
     STAssertNotNil(result,@"echo failed to return object");
     STAssertNotNil([result objectForKey:@"testArray"],@"test array was not echoed");
@@ -125,7 +143,12 @@
     STAssertNotNil([result objectForKey:@"testInt"],@"test testInt was not echoed");
     STAssertNotNil([result objectForKey:@"testLong"],@"test testLong was not echoed");
    // STAssertNotNil([result objectForKey:@"me"],@"test me was not echoed");
-   
+    STAssertNotNil([result objectForKey:@"testData"],@"test testData was not echoed");
+    STAssertNotNil([result objectForKey:@"testBigString"],@"test testData was not echoed");
+    NSLog(@"testBigString echoed = %@",[result objectForKey:@"testBigString"]);
+    //write data back out to file and verify
+    [[result objectForKey:@"testData"] writeToFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.out.jpg" atomically:YES];
+
     TestObject * aTestObj = [[[TestObject alloc] init] autorelease];
     [aTestObj setFname:@"Byron"];
     [aTestObj setLname:@"Wright"];
@@ -151,6 +174,12 @@
     STAssertNotNil(result,@"fault test return nil value");
     STAssertTrue([result isKindOfClass:[NSError class]],@"fault test returned did not return an error");
     NSLog(@"test fault return value = %@",result);
+    //NSLog(@"fault address = %08x",result);
+    //get underlying error address
+    NSLog(@"fault description = %@",[result localizedDescription]);
+
+   // NSDictionary * err = [[result userInfo] objectForKey:NSUnderlyingErrorKey];
+    //NSLog(@"fault underlying error cause = %@",[[[[result userInfo] objectForKey:NSUnderlyingErrorKey] objectForKey:@"cause"] objectForKey:@"detailMessage"]);
 }
 
 /*- (void) testRefs {
