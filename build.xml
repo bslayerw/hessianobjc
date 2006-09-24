@@ -1,0 +1,52 @@
+<project name="HessianObjC" default="dist" basedir=".">
+	<description>
+		HessianObjC is a Mac OS X native framework that implements the Hessian binary web service protocol in Objective-C.
+	</description>
+	<property name="src" location="."/>
+	<property name="build" location="build"/>
+	<property name="dist" location="dist"/>
+	
+	<target name="init">
+		<tstamp/>
+		
+	</target>
+	
+	<target name="compileall">
+		<echo>Starting Build.</echo>
+		<exec executable="xcodebuild" failonerror="true">
+			<arg value="-alltargets"/>
+		</exec>
+		<echo>End Build.</echo>
+		<!-- call xcodebuild command line with parameters -->
+	</target>
+	
+	<target name="compile_deploy">
+		<echo>Starting Build.</echo>
+		<exec executable="xcodebuild" failonerror="true">
+			<arg value="-target"/>
+			<arg value="HessianObjC"/> 
+			<arg value="-configuration"/>
+			<arg value="Deployment"/> 
+		</exec>
+		<echo>End Build.</echo>
+		<!-- call xcodebuild command line with parameters -->
+	</target>
+	
+	<target name="cleanall">
+		<echo>Starting clean.</echo>
+		<exec executable="xcodebuild" >
+			<arg value="-alltargets"/>
+			<arg value="clean"/>
+		</exec>
+		<echo>End clean.</echo>
+	</target>
+	
+	<target name="rebuildall" depends="cleanall,compileall">
+	</target>
+	
+	<!-- rebuild, run tests and create distribution archive -->
+	<target name="dist" depends="rebuildall">
+		<tstamp/>
+		<mkdir dir="${dist}"/>
+	</target>
+</project>
