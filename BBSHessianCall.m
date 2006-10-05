@@ -74,6 +74,7 @@
     callData = nil;  
    /* [headers release];
     headers = nil;*/
+    [self setParameters:nil];
     [super dealloc];
 }
 @end
