@@ -5,7 +5,7 @@ HessianObjC Installation Instructions:
 
 1. Requirements
 
-* Currently the HessianObjC framework is built as a univeral binary target for Mac OS X Tiger using XCode 2.2.
+* Currently the HessianObjC framework is built as a univeral binary target for Mac OS X Tiger using XCode 2.4.
 
 2. Install
 
