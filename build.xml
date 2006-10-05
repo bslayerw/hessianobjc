@@ -5,7 +5,7 @@
 	<property name="src" location="."/>
 	<property name="build" location="build"/>
 	<property name="dist" location="dist"/>
-	
+	<property name="deployment_build" location="${build}/Deployment"/>
 	<target name="init">
 		<tstamp/>
 		
@@ -32,6 +32,28 @@
 		<!-- call xcodebuild command line with parameters -->
 	</target>
 	
+	<target name="dist" depends="compileall">
+		<echo>Creating distr package...</echo>
+		<tstamp/>
+		<mkdir dir="${dist}"/>
+		<!-- first move the Deployment build to the dist dir -->
+		<copy todir="${dist}">
+    		<fileset dir="${deployment_build}">
+    			<exclude name="**/HessianObjTest.octest/**"/>
+    		</fileset>    		
+  		</copy>
+  		<copy todir="${dist}/examples">
+  			<fileset dir="examples">
+    		</fileset>
+  		</copy>
+		<zip destfile="${dist}/HessianObjC.zip">
+    		<fileset dir="${dist}"/>
+    		<fileset dir="." includes="INSTALL"/>
+    		<fileset dir="." includes="LICENSE"/>
+  		</zip>
+		<echo>Done.</echo>
+	</target>
+	
 	<target name="cleanall">
 		<echo>Starting clean.</echo>
 		<exec executable="xcodebuild" >
@@ -43,10 +65,5 @@
 	
 	<target name="rebuildall" depends="cleanall,compileall">
 	</target>
-	
-	<!-- rebuild, run tests and create distribution archive -->
-	<target name="dist" depends="rebuildall">
-		<tstamp/>
-		<mkdir dir="${dist}"/>
-	</target>
+
 </project>
