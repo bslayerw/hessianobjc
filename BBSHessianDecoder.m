@@ -467,7 +467,6 @@ static NSMutableDictionary * gClassMapping;
     }
     NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@:%@",codeMessage,message]
                                                               forKey:NSLocalizedDescriptionKey];
-   // [userInfo setObject:details forKey:NSUnderlyingErrorKey]; 
     [userInfo setObject:details forKey:NSUnderlyingErrorKey];
     return [NSError errorWithDomain:BBSHessianObjCError
                                code:BBSHessianProtocolError
