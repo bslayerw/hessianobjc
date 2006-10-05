@@ -456,15 +456,19 @@ static NSMutableDictionary * gClassMapping;
                                userInfo:userInfo];
     }
 
-    NSDictionary * details = [self decodeMap];   
+    id details = [self decodeMap];
     //for now remove cause value, in Java this always seems to be a ref back to the root exception
     //this causes problems when callign descriptions on the fault dictionary because it causes an infinit loop
-    NSMutableDictionary * detailsMutable = [details mutableCopy];
-    [detailsMutable removeObjectForKey:@"cause"];
+    if([details isKindOfClass:[NSDictionary class]])
+    {
+        NSMutableDictionary * detailsMutable = [[details mutableCopy] autorelease];
+        [detailsMutable removeObjectForKey:@"cause"];
+        details = detailsMutable;
+    }
     NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@:%@",codeMessage,message]
                                                               forKey:NSLocalizedDescriptionKey];
-     
-    [userInfo setObject:detailsMutable forKey:NSUnderlyingErrorKey];
+   // [userInfo setObject:details forKey:NSUnderlyingErrorKey]; 
+    [userInfo setObject:details forKey:NSUnderlyingErrorKey];
     return [NSError errorWithDomain:BBSHessianObjCError
                                code:BBSHessianProtocolError
                            userInfo:userInfo];
