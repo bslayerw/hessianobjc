@@ -205,7 +205,7 @@ static NSMutableDictionary * gClassMapping;
     else if([classString isEqualToString:@"NSCFBoolean"]) {
         [self encodeBool:[anyObject boolValue]];
     }    
-    else if([classString isEqualToString:@"NSCFNumber"]) {
+    else if([anyObject isKindOfClass:[NSNumber class]]) {
         [self encodeNumber:anyObject];
     }
     else if([objClass isKindOfClass:[NSValue class]] || 
