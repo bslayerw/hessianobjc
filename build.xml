@@ -33,14 +33,20 @@
 	</target>
 	
 	<target name="dist" depends="compileall">
-		<echo>Creating distr package...</echo>
+		<echo>Creating distro package...</echo>
 		<tstamp/>
+		<echo>${DSTAMP}</echo>
 		<mkdir dir="${dist}"/>
 		<!-- first move the Deployment build to the dist dir -->
 		<copy todir="${dist}">
     		<fileset dir="${deployment_build}">
     			<exclude name="**/HessianObjTest.octest/**"/>
     		</fileset>    		
+    		<fileset dir="${src}">
+    			<filename name="INSTALL"/>
+    			<filename name="LICENSE"/>
+    			<filename name="CHANGELOG"/>
+    		</fileset>
   		</copy>
   		<copy todir="${dist}/examples">
   			<fileset dir="examples">
