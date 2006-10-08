@@ -121,6 +121,9 @@
     [aDict setObject:@"test string for TestObject" forKey:@"testValue"];
     [aDict setObject:anInt forKey:@"testInt"];
     [aDict setObject:aLong forKey:@"testLong"];
+    
+    NSDecimalNumber * dec = [NSDecimalNumber decimalNumberWithString:@"23.00"];
+    [aDict setObject:dec forKey:@"testDecimal"];
     //test encoding and decoding of NSData
     NSString * bigString = [NSString stringWithContentsOfFile:@"/Users/byronwright/Documents/Tyler Playing With Water.xml"];
     NSLog(@"bigString = %@",bigString);
