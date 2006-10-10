@@ -63,7 +63,7 @@
 }
 
 - (void) testCallNull {    
-    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"nullCall" withParameters:nil];
     NSLog(@"testCallNull result = %@",result);
@@ -71,7 +71,7 @@
 }
 
 - (void) testHello {
-    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"hello" withParameters:nil];
     STAssertNotNil(result,@"test hello did not return a valid value");
@@ -80,7 +80,7 @@
 }
 
 - (void) testSubtract {
-    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     NSNumber * a = [NSNumber numberWithInt:1130];
     NSNumber * b = [NSNumber numberWithInt:551];
@@ -89,7 +89,7 @@
 }
 
 - (void) testEcho {
-    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
     
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     NSMutableDictionary * encodeMapping = [NSMutableDictionary dictionary];
@@ -98,7 +98,7 @@
     [archiver setOutputFormat:NSPropertyListXMLFormat_v1_0];
     [archiver encodeObject:encodeMapping];
     [archiver finishEncoding];
-    //[mappingData writeToFile:@"/Users/byronwright/testmapping.xml" atomically:YES];
+   // [mappingData writeToFile:@"/Users/byronwright/testmapping.xml" atomically:YES];
     //[BBSHessianEncoder setClassNameMapping:encodeMapping];
     NSNumber * anInt = [NSNumber numberWithInt:551];
     NSNumber * aDouble = [NSNumber numberWithDouble:123123.5132];
@@ -125,17 +125,17 @@
     NSDecimalNumber * dec = [NSDecimalNumber decimalNumberWithString:@"23.00"];
     [aDict setObject:dec forKey:@"testDecimal"];
     //test encoding and decoding of NSData
-    NSString * bigString = [NSString stringWithContentsOfFile:@"/Users/byronwright/Documents/Tyler Playing With Water.xml"];
-    NSLog(@"bigString = %@",bigString);
+    NSString * bigString = [NSString stringWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/LICENSE"];
+    //NSLog(@"bigString = %@",bigString);
     [aDict setObject:bigString forKey:@"testBigString"];
     
-    NSData * testData = [NSData dataWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.jpg"];
-    if(testData == nil) {
-        NSLog(@"test data is nil");
-    }
-    NSLog(@"test test test");
+  //  NSData * testData = [NSData dataWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.jpg"];
+  //  if(testData == nil) {
+  //      NSLog(@"test data is nil");
+  //  }
+  //  NSLog(@"test test test");
    /// NSLog(@"testData = %@",testData);
-    [aDict setObject:testData forKey:@"testData"];
+   // [aDict setObject:testData forKey:@"testData"];
     id result = [proxy callSynchronous:@"echo" withParameters:[NSArray arrayWithObjects:aDict,nil]];
     STAssertNotNil(result,@"echo failed to return object");
     STAssertNotNil([result objectForKey:@"testArray"],@"test array was not echoed");
@@ -145,12 +145,15 @@
     STAssertNotNil([result objectForKey:@"testValue"],@"test testValue was not echoed");
     STAssertNotNil([result objectForKey:@"testInt"],@"test testInt was not echoed");
     STAssertNotNil([result objectForKey:@"testLong"],@"test testLong was not echoed");
-   // STAssertNotNil([result objectForKey:@"me"],@"test me was not echoed");
-    STAssertNotNil([result objectForKey:@"testData"],@"test testData was not echoed");
+    STAssertNotNil([result objectForKey:@"testDecimal"],@"failed to echo decimal number");
+    STAssertTrue([[result objectForKey:@"testDecimal"] isEqualToNumber:[NSNumber numberWithDouble:23.00]],@"returned decimal value is not == 23");
+    NSLog(@"testDecimal = %@", dec);
+       // STAssertNotNil([result objectForKey:@"me"],@"test me was not echoed");
+  //  STAssertNotNil([result objectForKey:@"testData"],@"test testData was not echoed");
     STAssertNotNil([result objectForKey:@"testBigString"],@"test testData was not echoed");
     NSLog(@"testBigString echoed = %@",[result objectForKey:@"testBigString"]);
     //write data back out to file and verify
-    [[result objectForKey:@"testData"] writeToFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.out.jpg" atomically:YES];
+   // [[result objectForKey:@"testData"] writeToFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.out.jpg" atomically:YES];
 
     TestObject * aTestObj = [[[TestObject alloc] init] autorelease];
     [aTestObj setFname:@"Byron"];
@@ -171,7 +174,7 @@
 
 
 - (void) testFault {
-    NSURL * url = [NSURL URLWithString:@"http://localhost:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"fault" withParameters:nil];
     STAssertNotNil(result,@"fault test return nil value");

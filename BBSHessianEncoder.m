@@ -169,7 +169,7 @@ static NSMutableDictionary * gClassMapping;
             char t = 't';
             [callData appendBytes:&t length:1];
             unsigned short len = [className length];
-            UInt16 biLen = EndianU16_NtoB(len);
+            uint16_t biLen = CFSwapInt16HostToBig(len);
             [callData appendBytes:&biLen length:sizeof(biLen)];
             [callData appendBytes:[className UTF8String] length:len];
         }
@@ -238,7 +238,7 @@ static NSMutableDictionary * gClassMapping;
     char S = 'S';    
     while(currentLen > 0x8000) { /* 32768 or 0x8000 is the 16 bit length limit for a binary chunk */
         [callData appendBytes:&s length:1];
-        UInt16 sLen = EndianU16_NtoB(0x8000);
+        uint16_t sLen = CFSwapInt16HostToBig(0x800);
         [callData appendBytes:&sLen length:sizeof(sLen)];
         //now add chunk        
         NSString * stringChunk = [aString substringWithRange:NSMakeRange(currentPos,0x8000)];
@@ -247,7 +247,7 @@ static NSMutableDictionary * gClassMapping;
         currentLen -= 0x8000;
     }    
     [callData appendBytes:&S length:1];
-    UInt16 sLen = EndianU16_NtoB(currentLen);
+    uint16_t sLen = CFSwapInt16HostToBig(currentLen);
     [callData appendBytes:&sLen length:sizeof(sLen)];
     NSString * stringChunk = [aString substringWithRange:NSMakeRange(currentPos,currentLen)];  
     [callData appendBytes:[stringChunk UTF8String] length:[stringChunk length]];    
@@ -281,19 +281,19 @@ static NSMutableDictionary * gClassMapping;
     char d = 'd';
     [callData appendBytes:&d length:1];
     long long aLong = [aDate timeIntervalSince1970] * 1000;
-    aLong = EndianS64_NtoB(aLong);    
-    [callData appendBytes:&aLong length:sizeof(aLong)];
+    uint64_t bigDate = CFSwapInt64HostToBig(aLong) ;
+    [callData appendBytes:&bigDate length:sizeof(bigDate)];
 }
 
 - (void) encodeDouble:(double) aDouble {   
     char d = 'D';
     [callData appendBytes:&d length:1];
-    aDouble = EndianS64_NtoB(aDouble);    
-    [callData appendBytes:&aDouble length:sizeof(aDouble)];
+    CFSwappedFloat64 bigEndian = CFConvertFloat64HostToSwapped(aDouble);
+    [callData appendBytes:&bigEndian length:sizeof(bigEndian)];
 }
 
 - (void) encodeInt:(int) anInt {
-    UInt32 biInt = EndianU32_NtoB(anInt);
+    uint32_t biInt = CFSwapInt32HostToBig(anInt);
     char I = 'I';
     [callData appendBytes:&I length:1];
     [callData appendBytes:&biInt length:sizeof(biInt)];
@@ -305,7 +305,7 @@ static NSMutableDictionary * gClassMapping;
 
     char l = 'l';
     [callData appendBytes:&l length:1];    
-    UInt32 length = EndianU32_NtoB(-1);       
+    uint32_t length =CFSwapInt32HostToBig(-1);   
     [callData appendBytes:&length length:sizeof(length)];
     
     NSEnumerator * e = [anArray objectEnumerator];
@@ -334,11 +334,10 @@ static NSMutableDictionary * gClassMapping;
 }
 
 - (void) encodeLongLong:(long long) aLongLong {
-    
     char L = 'L';
     [callData appendBytes:&L length:1];
-    aLongLong = EndianS64_NtoB(aLongLong);
-    [callData appendBytes:&aLongLong length:sizeof(aLongLong)];
+    uint64_t biLongLong = CFSwapInt64HostToBig(aLongLong);
+    [callData appendBytes:&biLongLong length:sizeof(biLongLong)];
 }
 
 - (void) encodeNil {
@@ -353,7 +352,7 @@ static NSMutableDictionary * gClassMapping;
     char X = 'X';    
     while(currentLen > 0x8000) { /* 32768 or 0x8000 is the 16 bit length limit for a binary chunk */
         [callData appendBytes:&x length:1];
-        UInt16 xLen = EndianU16_NtoB(0x8000);
+        uint16_t xLen = CFSwapInt16HostToBig(0x800);
         [callData appendBytes:&xLen length:sizeof(xLen)];
         //now add chunk        
         NSString * stringChunk = [anXmlString substringWithRange:NSMakeRange(currentPos,0x8000)];
@@ -363,7 +362,7 @@ static NSMutableDictionary * gClassMapping;
         currentLen -= 0x8000;
     }    
     [callData appendBytes:&X length:1];
-    UInt16 xLen = EndianU16_NtoB(currentLen);
+    uint16_t xLen = CFSwapInt16HostToBig(0x800);
     [callData appendBytes:&xLen length:sizeof(xLen)];
     NSString * stringChunk = [anXmlString substringWithRange:NSMakeRange(currentPos,currentLen)];
     [callData appendBytes:[stringChunk UTF8String] length:[stringChunk length]]; 
@@ -371,7 +370,7 @@ static NSMutableDictionary * gClassMapping;
 
 - (void) encodeType:(NSString *) aClassName {
     unsigned short len = [aClassName length];
-    UInt16 biLen = EndianU16_NtoB(len);    
+    uint16_t biLen = CFSwapInt16HostToBig(len);   
     char S = 't';
     [callData appendBytes:&S length:1];
     [callData appendBytes:&biLen length:sizeof(biLen)];
@@ -386,8 +385,8 @@ static NSMutableDictionary * gClassMapping;
     
     while(currentLen > 0x8000) { /* 32768 or 0x8000 is the 16 bit length limit for a binary chunk */
         [callData appendBytes:&b length:1];
-        UInt16 biLen = EndianU16_NtoB(0x8000);
-        [callData appendBytes:&biLen length:sizeof(biLen)];
+        uint16_t xLen = CFSwapInt16HostToBig(0x800);
+        [callData appendBytes:&xLen length:sizeof(xLen)];
         //now add chunk        
         NSData * dataChunk = [someData subdataWithRange:NSMakeRange(currentPos,0x8000)];
         [callData appendBytes:[dataChunk bytes] length:[dataChunk length]];
@@ -395,7 +394,7 @@ static NSMutableDictionary * gClassMapping;
         currentLen -= 0x8000;
     }    
     [callData appendBytes:&B length:1];
-    UInt16 biLen = EndianU16_NtoB(currentLen);
+    uint16_t biLen = CFSwapInt16HostToBig(currentLen);
     [callData appendBytes:&biLen length:sizeof(biLen)];
     NSData * dataChunk = [someData subdataWithRange:NSMakeRange(currentPos,currentLen)];
     [callData appendBytes:[dataChunk bytes] length:[dataChunk length]];
