@@ -106,6 +106,10 @@
     return [hessianMap objectForKey:key];
 }
 
+- (BOOL)allowsKeyedCoding {
+    return YES;
+}
+
 
 
 - (void) dealloc {
