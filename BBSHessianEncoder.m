@@ -136,6 +136,10 @@ static NSMutableDictionary * gClassMapping;
     gClassMapping = [aMappingDictionary mutableCopy];
 }
 
+- (BOOL)allowsKeyedCoding {
+    return YES;
+}
+
 - (void) dealloc {
     [callData release];
     callData = nil;
