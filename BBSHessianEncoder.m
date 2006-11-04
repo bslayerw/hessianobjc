@@ -212,6 +212,9 @@ static NSMutableDictionary * gClassMapping;
     else if([anyObject isKindOfClass:[NSNumber class]]) {
         [self encodeNumber:anyObject];
     }
+    else if([anyObject isKindOfClass:[NSNull class]]) {
+        [self encodeNil];
+    }
     else if([objClass isKindOfClass:[NSValue class]] || 
             [classString isEqualToString:@"NSConcreteValue"]) {
     }
