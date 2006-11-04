@@ -121,11 +121,11 @@
     [aDict setObject:@"test string for TestObject" forKey:@"testValue"];
     [aDict setObject:anInt forKey:@"testInt"];
     [aDict setObject:aLong forKey:@"testLong"];
-    
+    [aDict setObject:[NSNull null] forKey:@"testNull"];
     NSDecimalNumber * dec = [NSDecimalNumber decimalNumberWithString:@"23.00"];
     [aDict setObject:dec forKey:@"testDecimal"];
     //test encoding and decoding of NSData
-    NSString * bigString = [NSString stringWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/LICENSE"];
+    NSString * bigString = [NSString stringWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/LICENSE"];
     //NSLog(@"bigString = %@",bigString);
     [aDict setObject:bigString forKey:@"testBigString"];
     
@@ -147,6 +147,8 @@
     STAssertNotNil([result objectForKey:@"testLong"],@"test testLong was not echoed");
     STAssertNotNil([result objectForKey:@"testDecimal"],@"failed to echo decimal number");
     STAssertTrue([[result objectForKey:@"testDecimal"] isEqualToNumber:[NSNumber numberWithDouble:23.00]],@"returned decimal value is not == 23");
+    NSLog(@"[result objectForKey:testNull] = %@",[result objectForKey:@"testNull"]);
+   // STAssertTrue([[result objectForKey:@"testNull"],@"failed to echo null");
     NSLog(@"testDecimal = %@", dec);
        // STAssertNotNil([result objectForKey:@"me"],@"test me was not echoed");
   //  STAssertNotNil([result objectForKey:@"testData"],@"test testData was not echoed");
