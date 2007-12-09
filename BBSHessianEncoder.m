@@ -221,10 +221,10 @@ static NSMutableDictionary * gClassMapping;
     else if([classString isEqualToString:@"NSCFDictionary"]) {
         [self encodeDictionary:anyObject];
     }
-    else if([classString isEqualToString:@"NSCFDate"] || 
-            [anyObject isKindOfClass:[NSCalendarDate class]]) {
-        [self encodeDate:anyObject];
-    }
+    else if([anyObject isKindOfClass:[NSDate class]] ||
+             [anyObject isKindOfClass:[NSCalendarDate class]]) {
+         [self encodeDate:anyObject];
+     }
     else  if([classString isEqualToString:@"NSCFArray"]) {
         [self encodeArray:anyObject];
     }    

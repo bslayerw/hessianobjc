@@ -148,7 +148,7 @@ static NSMutableDictionary * gClassMapping;
         case 'x': obj = [self decodeXml:'x'];break;
         case 'X': obj = [self decodeXml:'X'];break;
         default:  {
-            NSDictionary * userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"Unknown tag returned from server %c",code] 
+            NSDictionary * userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"Unknown tag returned %c",code] 
                                                                   forKey:NSLocalizedDescriptionKey];
             obj = [NSError errorWithDomain:BBSHessianObjCError
                                       code:BBSHessianProtocolError
@@ -391,7 +391,7 @@ static NSMutableDictionary * gClassMapping;
     [dataInputStream read:&objectTag maxLength:1]; 
     //should be 'S'
     if(objectTag != 'S') {
-        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response from server" 
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault" 
                                                               forKey:NSLocalizedDescriptionKey];
         return [NSError errorWithDomain:BBSHessianObjCError
                                    code:BBSHessianProtocolError
@@ -403,7 +403,7 @@ static NSMutableDictionary * gClassMapping;
     [dataInputStream read:&objectTag maxLength:1]; 
     //should be 'S'
     if(objectTag != 'S') {
-        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response from server" 
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault" 
                                                               forKey:NSLocalizedDescriptionKey];
         return [NSError errorWithDomain:BBSHessianObjCError
                                    code:BBSHessianProtocolError
@@ -414,7 +414,7 @@ static NSMutableDictionary * gClassMapping;
     [dataInputStream read:&objectTag maxLength:1]; 
     //should be 'S'
     if(objectTag != 'S') {
-        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response from server" 
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault" 
                                                               forKey:NSLocalizedDescriptionKey];
         return [NSError errorWithDomain:BBSHessianObjCError
                                    code:BBSHessianProtocolError
@@ -426,7 +426,7 @@ static NSMutableDictionary * gClassMapping;
     [dataInputStream read:&objectTag maxLength:1]; 
     //should be 'S'
     if(objectTag != 'S') {
-        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response from server" 
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault" 
                                                               forKey:NSLocalizedDescriptionKey];
         return [NSError errorWithDomain:BBSHessianObjCError
                                    code:BBSHessianProtocolError
@@ -437,7 +437,7 @@ static NSMutableDictionary * gClassMapping;
     [dataInputStream read:&objectTag maxLength:1]; 
     //should be 'S'
     if(objectTag != 'S') {
-        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response from server" 
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response" 
                                                               forKey:NSLocalizedDescriptionKey];
         return [NSError errorWithDomain:BBSHessianObjCError
                                    code:BBSHessianProtocolError
@@ -449,7 +449,7 @@ static NSMutableDictionary * gClassMapping;
     [dataInputStream read:&objectTag maxLength:1]; 
     //should be 'S'
     if(objectTag != 'M') {
-        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response from server" 
+        NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"Malformed fault response" 
                                                               forKey:NSLocalizedDescriptionKey];
         return [NSError errorWithDomain:BBSHessianObjCError
                                    code:BBSHessianProtocolError
@@ -459,8 +459,7 @@ static NSMutableDictionary * gClassMapping;
     id details = [self decodeMap];
     //for now remove cause value, in Java this always seems to be a ref back to the root exception
     //this causes problems when callign descriptions on the fault dictionary because it causes an infinit loop
-    if([details isKindOfClass:[NSDictionary class]])
-    {
+    if([details isKindOfClass:[NSDictionary class]]) {
         NSMutableDictionary * detailsMutable = [[details mutableCopy] autorelease];
         [detailsMutable removeObjectForKey:@"cause"];
         details = detailsMutable;

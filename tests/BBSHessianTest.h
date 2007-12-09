@@ -17,9 +17,11 @@
 //
 #import <SenTestingKit/SenTestingKit.h>
 
+static NSString * testEndPoint;
 
 @interface BBSHessianTest : SenTestCase {
 
+    
 
 }
 - (void) testCoders;
@@ -28,7 +30,6 @@
 - (void) testSubtract;
 - (void) testEcho;
 - (void) testFault;
-
 //- (void) testRefs;
 //- (void) testVariableLengthList;
 

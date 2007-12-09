@@ -15,6 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+static NSString * testEndPoint = @"http://hessian.caucho.com/test/test";
 
 #import "BBSHessianTest.h"
 #import "TestObject.h"
@@ -24,9 +25,9 @@
 
 
 + (void) initialize {
-    NSDictionary * classMapping = [NSDictionary dictionaryWithObject:@"TestObject" forKey:@"com.sbs.colledia.hessian.test.TestObject"];
+    NSDictionary * classMapping = [NSDictionary dictionaryWithObject:@"TestObject" forKey:@"com.bluebearstudio.hessianObjC.test.TestObject"];
     [BBSHessianProxy setClassMapping:classMapping];
-
+    NSLog(@"main bundle = %@",[NSBundle mainBundle]);
 }
 
 - (void) testCoders {
@@ -46,14 +47,10 @@
     STAssertNotNil([decodedObj fname],@"did not decode fname property");
     STAssertNotNil([decodedObj lname],@"did not decode lname property");
 
-    NSLog(@"decodedObj = %@",decodedObj);
-    NSLog(@"fname = %@",[decodedObj fname]);
-    NSLog(@"lname = %@",[decodedObj lname]);
     NSMutableData * encodedObject = [BBSHessianEncoder dataWithRootObject:obj];
     STAssertNotNil(encodedObject,@"failed to encode data with root object");
-    //STAssertTrue(([encodedObject length] > 0),@"empty data returned from encoding");
     id anotherDecodedObject = [BBSHessianDecoder decodedObjectWithData:encodedObject];
-    NSLog(@"anotherDecodedObject = %@",anotherDecodedObject);
+ 
     STAssertNotNil(anotherDecodedObject,@"failed to decode object");
     
    /* NSData * imgIn = [NSData dataWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.jpg"];
@@ -63,7 +60,7 @@
 }
 
 - (void) testCallNull {    
-    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:testEndPoint];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"nullCall" withParameters:nil];
     NSLog(@"testCallNull result = %@",result);
@@ -71,25 +68,23 @@
 }
 
 - (void) testHello {
-    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:testEndPoint];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"hello" withParameters:nil];
     STAssertNotNil(result,@"test hello did not return a valid value");
-    //STAssertTrue([result length] > 0,@"excepted a non-empty string");
-    NSLog(@"testHello = %@",result);
 }
 
 - (void) testSubtract {
-    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:testEndPoint];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     NSNumber * a = [NSNumber numberWithInt:1130];
     NSNumber * b = [NSNumber numberWithInt:551];
     id result = [proxy callSynchronous:@"subtract" withParameters:[NSArray arrayWithObjects:a,b,nil]];
-    NSLog(@"testSubtract result = %@",result);
+    STAssertEquals([result intValue],579,@"result of subtracting 551 from 1130 should be 579");
 }
 
 - (void) testEcho {
-    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:testEndPoint];
     
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     NSMutableDictionary * encodeMapping = [NSMutableDictionary dictionary];
@@ -126,16 +121,9 @@
     [aDict setObject:dec forKey:@"testDecimal"];
     //test encoding and decoding of NSData
     NSString * bigString = [NSString stringWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/LICENSE"];
-    //NSLog(@"bigString = %@",bigString);
+
     [aDict setObject:bigString forKey:@"testBigString"];
-    
-  //  NSData * testData = [NSData dataWithContentsOfFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.jpg"];
-  //  if(testData == nil) {
-  //      NSLog(@"test data is nil");
-  //  }
-  //  NSLog(@"test test test");
-   /// NSLog(@"testData = %@",testData);
-   // [aDict setObject:testData forKey:@"testData"];
+
     id result = [proxy callSynchronous:@"echo" withParameters:[NSArray arrayWithObjects:aDict,nil]];
     STAssertNotNil(result,@"echo failed to return object");
     STAssertNotNil([result objectForKey:@"testArray"],@"test array was not echoed");
@@ -147,15 +135,7 @@
     STAssertNotNil([result objectForKey:@"testLong"],@"test testLong was not echoed");
     STAssertNotNil([result objectForKey:@"testDecimal"],@"failed to echo decimal number");
     STAssertTrue([[result objectForKey:@"testDecimal"] isEqualToNumber:[NSNumber numberWithDouble:23.00]],@"returned decimal value is not == 23");
-    NSLog(@"[result objectForKey:testNull] = %@",[result objectForKey:@"testNull"]);
-   // STAssertTrue([[result objectForKey:@"testNull"],@"failed to echo null");
-    NSLog(@"testDecimal = %@", dec);
-       // STAssertNotNil([result objectForKey:@"me"],@"test me was not echoed");
-  //  STAssertNotNil([result objectForKey:@"testData"],@"test testData was not echoed");
     STAssertNotNil([result objectForKey:@"testBigString"],@"test testData was not echoed");
-    NSLog(@"testBigString echoed = %@",[result objectForKey:@"testBigString"]);
-    //write data back out to file and verify
-   // [[result objectForKey:@"testData"] writeToFile:@"/Users/byronwright/Projects/hessianobjc/trunk/tests/P1040812.out.jpg" atomically:YES];
 
     TestObject * aTestObj = [[[TestObject alloc] init] autorelease];
     [aTestObj setFname:@"Byron"];
@@ -164,30 +144,26 @@
     [child setFname:@"Tyler"];
     [child setLname:@"Wright"];
     [aTestObj setChild:child];
-    
     result = [proxy callSynchronous:@"echo" withParameters:[NSArray arrayWithObjects:aTestObj,nil]];
     STAssertNotNil(result,@"echo failed to return object");
-    STAssertNotNil([result fname],@"fname property was not echoed");
-    STAssertNotNil([result lname],@"lname property was not echoed");
-    STAssertNotNil([result child],@"child property was not echoed");
-    STAssertNotNil([[result child] fname],@"child fname property was not echoed");
-    STAssertNotNil([[result child] lname],@"child lname property was not echoed");
+
+    STAssertNotNil([result objectForKey:@"fname"],@"fname property was not echoed");
+    STAssertNotNil([result objectForKey:@"lname"],@"lname property was not echoed");
+    STAssertNotNil([result objectForKey:@"child"],@"child property was not echoed");
+    STAssertNotNil([[result objectForKey:@"child"] objectForKey:@"fname"],@"child fname property was not echoed");
+    STAssertNotNil([[result objectForKey:@"child"] objectForKey:@"lname"],@"child lname property was not echoed");
 }
 
 
 - (void) testFault {
-    NSURL * url = [NSURL URLWithString:@"http://192.168.1.4:8080/springapp/hello.service"];
+    NSURL * url = [NSURL URLWithString:testEndPoint];
     BBSHessianProxy * proxy = [[[BBSHessianProxy alloc] initWithUrl:url] autorelease];
     id result = [proxy callSynchronous:@"fault" withParameters:nil];
     STAssertNotNil(result,@"fault test return nil value");
     STAssertTrue([result isKindOfClass:[NSError class]],@"fault test returned did not return an error");
     NSLog(@"test fault return value = %@",result);
-    //NSLog(@"fault address = %08x",result);
     //get underlying error address
     NSLog(@"fault description = %@",[result localizedDescription]);
-
-   // NSDictionary * err = [[result userInfo] objectForKey:NSUnderlyingErrorKey];
-    //NSLog(@"fault underlying error cause = %@",[[[[result userInfo] objectForKey:NSUnderlyingErrorKey] objectForKey:@"cause"] objectForKey:@"detailMessage"]);
 }
 
 /*- (void) testRefs {
@@ -208,6 +184,4 @@
     STAssertFalse([result isKindOfClass:[NSError class]],@"\"list\" test returned did not return an error");
     NSLog(@"test testVariableLengthList return value = %@",result);
 }*/
-
-
 @end
