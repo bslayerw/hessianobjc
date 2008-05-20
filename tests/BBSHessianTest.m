@@ -27,7 +27,6 @@ static NSString * testEndPoint = @"http://hessian.caucho.com/test/test";
 + (void) initialize {
     NSDictionary * classMapping = [NSDictionary dictionaryWithObject:@"TestObject" forKey:@"com.bluebearstudio.hessianObjC.test.TestObject"];
     [BBSHessianProxy setClassMapping:classMapping];
-    NSLog(@"main bundle = %@",[NSBundle mainBundle]);
 }
 
 - (void) testCoders {
@@ -125,7 +124,7 @@ static NSString * testEndPoint = @"http://hessian.caucho.com/test/test";
     [aDict setObject:bigString forKey:@"testBigString"];
 
     id result = [proxy callSynchronous:@"echo" withParameters:[NSArray arrayWithObjects:aDict,nil]];
-    STAssertNotNil(result,@"echo failed to return object");
+    STAssertNotNil(result,@"echo failed to return object");    
     STAssertNotNil([result objectForKey:@"testArray"],@"test array was not echoed");
     STAssertNotNil([result objectForKey:@"testDouble"],@"test double was not echoed");
     STAssertNotNil([result objectForKey:@"testDate"],@"test date was not echoed");

@@ -27,18 +27,24 @@
 - (int) decodeStringLength;
 - (NSString *) decodeXml:(uint8_t) startCode;
 - (NSString *) decodeString:(uint8_t) startCode;
-- (NSString *) decodeStringChunk;
+- (NSString *) decodeStringChunk:(int) len;
+- (NSString *) decodeCompactString;
 - (NSNumber *) decodeInt;
+- (NSNumber *) decodeIntForCode:(uint8_t) startCode;
+- (id) allocObjectWithType:(NSMutableDictionary *)dict andType:(NSString *)type;
 /** Return an NSDictionary or a class instance if a mapping for this "map" is available */
 - (id) decodeMap;
-- (NSArray * ) decodeList;
+- (NSArray * ) decodeList:(uint8_t) startCode;
 - (NSNumber *) decodeLong;
 - (NSNumber *) decodeDouble;
 - (NSDate *) decodeDate;
 - (NSData *) decodeByteChunks;
 - (NSData *) decodeBytes;
 - (NSError *) decodeFault;
-- (id) decodeRef;
+- (void) addToRefArray:(id) val;
+- (id) decodeRef:(uint8_t) startCode;
+- (void) decodeCompactObjectHeader;
+- (id) decodeCompactObject;
 
 @end
 
@@ -54,6 +60,10 @@ static NSMutableDictionary * gClassMapping;
     if((self = [super init]) != nil) {
         classMapping = [[NSMutableDictionary dictionary] retain];
         refArray = [[NSMutableArray array] retain];
+        classDef = [[NSMutableArray array] retain];
+        typeMap = [[NSMutableArray array] retain];
+        objectDefinitionMap = [[NSMutableArray array] retain];
+        fieldsByTypeName = [[NSMutableDictionary dictionary] retain];
     }
     return self;
 }
@@ -107,6 +117,14 @@ static NSMutableDictionary * gClassMapping;
     dataInputStream = nil;
     [refArray release];
     refArray = nil;
+    [classDef release];
+    classDef = nil;
+    [typeMap release];
+    typeMap = nil;
+    [objectDefinitionMap release];
+    objectDefinitionMap = nil;
+    [fieldsByTypeName release];
+    fieldsByTypeName = nil;
     [super dealloc];
 }
 @end
@@ -121,7 +139,7 @@ static NSMutableDictionary * gClassMapping;
        return [self decodeObjectForCode:objectTag];
     }
     else {
-        NSLog(@"no data available");
+        NSLog(@"ERROR: no data available");
     }
     return obj;
 }
@@ -137,17 +155,38 @@ static NSMutableDictionary * gClassMapping;
         case 'd': obj = [self decodeDate];break;
         case 'D': obj = [self decodeDouble];break;
         case 'f': obj = [self decodeFault] ; break;
-        case 'I': obj = [self decodeInt]; break;
-        case 'V': obj = [self decodeList]; break;
+        case 'I': obj = [self decodeIntForCode:code]; break;
+        case 'v': obj = [self decodeList:code]; break;
+        case 'V': obj = [self decodeList:code]; break;
         case 'L': obj = [self decodeLong] ;break;
         case 'M': obj = [self decodeMap]; break;
         case 'N': obj = nil ;break;
-        case 'R': obj = [self decodeRef];break;
-        case 's': obj = [self decodeString:'s'];break;
-        case 'S': obj = [self decodeString:'S'];break;
+        case 'o': obj = [self decodeCompactObject]; break;
+        case 'O': [self decodeCompactObjectHeader] ; obj = [self decodeObject]; break;
+        case 'R': obj = [self decodeRef:code];break;
+        case 0x4a: obj = [self decodeRef:code];break;
+        case 0x4b: obj = [self decodeRef:code];break;
+        case 's': obj = [self decodeString:code];break;
+        case 'S': obj = [self decodeString:code];break;
         case 'x': obj = [self decodeXml:'x'];break;
         case 'X': obj = [self decodeXml:'X'];break;
         default:  {
+        
+            // TODO: fix. something fishy with the int type here
+            if ((code >= 0x00)&&(code <= 0x1f)) { 
+                return [self decodeStringChunk:code];
+            }
+            if ((code >= 0x80)&&(code <= 0xbf)) { 
+                return [self decodeIntForCode:code];
+            }
+            if ((code >= 0xc0)&&(code <= 0xcf)) { 
+                return [self decodeIntForCode:code];
+            }
+            if ((code >= 0xd0)&&(code <= 0xd7)) { 
+                return [self decodeIntForCode:code];
+            }
+            
+        
             NSDictionary * userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"Unknown tag returned %c",code] 
                                                                   forKey:NSLocalizedDescriptionKey];
             obj = [NSError errorWithDomain:BBSHessianObjCError
@@ -162,11 +201,11 @@ static NSMutableDictionary * gClassMapping;
 - (NSString *) decodeXml:(uint8_t) startCode {
     NSMutableString * xmlString = [NSMutableString string];
     while(startCode == 'x') { //decode chunks
-        [xmlString appendString:[self decodeStringChunk]];
+        [xmlString appendString:[self decodeString:'S']];
         [dataInputStream read:&startCode maxLength:1]; 
     }
     if(startCode == 'X') {
-        [xmlString appendString:[self decodeStringChunk]];
+        [xmlString appendString:[self decodeString:'S']];
     }
     else {
         NSLog(@"expected 'X' for last xml chunk");        
@@ -174,8 +213,7 @@ static NSMutableDictionary * gClassMapping;
     return xmlString;
 }
 
-- (NSString *) decodeStringChunk {
-    int len = [self decodeStringLength];
+- (NSString *) decodeStringChunk:(int) len {
     if(len == 0) {
         return @"";
     }
@@ -194,63 +232,157 @@ static NSMutableDictionary * gClassMapping;
 }
 
 - (NSString *) decodeString:(uint8_t) startCode {
+    int stringLength = 0;
+    
+    // Strings with length less than 32 may be encoded with a single octet
+    if (startCode < 32) {
+        stringLength = startCode;
+        return [self decodeStringChunk:stringLength];
+    }
     
     NSMutableString * retString = [NSMutableString string];
     while(startCode == 's') { //decode chunks
-        [retString appendString:[self decodeStringChunk]];
+        stringLength = [self decodeStringLength];
+        if(stringLength == 0) {
+            NSLog(@"ERROR: why have a string chunk of lenght 0?");
+            break;
+        }
+        [retString appendString:[self decodeStringChunk:stringLength]];
         [dataInputStream read:&startCode maxLength:1]; 
     }
     if(startCode == 'S') {
-        [retString appendString:[self decodeStringChunk]];
+        stringLength = [self decodeStringLength];
+        [retString appendString:[self decodeStringChunk:stringLength]];
     }
     else {
-        NSLog(@"expected 'S' for last string chunk");        
+        NSLog(@"ERROR: expected 'S' for last string chunk");        
     }
     return retString;
 }
 
+- (NSString *) decodeCompactString {
+    uint8_t startCode = 'e';
+    [dataInputStream read:&startCode maxLength:1];
+    
+    // check if we should fall back to old
+    if ((startCode == 's')||(startCode == 'S')) {
+        return [self decodeString:startCode];
+    }
+    
+    int len  = 0;
+    if (startCode < 32) {
+        len = startCode;
+    } else {
+        len = [[self decodeIntForCode:startCode] intValue];
+    }
+    return [self decodeStringChunk:len];
+}
+
 - (NSNumber *) decodeInt {
-    SInt32 val = 0;
-    if([dataInputStream hasBytesAvailable]) {    
-       [dataInputStream read:(uint8_t *)&val maxLength:4];       
-       val = EndianS32_BtoN(val);       
-       return [NSNumber numberWithInt:val];
+    return [self decodeIntForCode:'I'];
+}
+
+- (NSNumber *) decodeIntForCode:(uint8_t) startCode {
+
+    if (startCode == 'I') {
+        SInt32 val = 0;
+        if([dataInputStream hasBytesAvailable]) {    
+           [dataInputStream read:(uint8_t *)&val maxLength:4];       
+           val = EndianS32_BtoN(val);       
+           return [NSNumber numberWithInt:val];
+        }
+        return nil;
+    }
+    
+    NSNumber *val = nil;
+    if ((startCode >= 0x80)&&(startCode <= 0xbf)) {
+        // compact single octet integer
+        val = [NSNumber numberWithInt:(startCode - 0x90)];
+    } else if ((startCode >= 0xc0)&&(startCode <= 0xcf)) {
+        // compact two octet integer
+        uint8_t b0 = 0;
+        [dataInputStream read:&b0 maxLength:1];
+        val = [NSNumber numberWithInt:(((startCode - 0xc8) << 8) + b0)];
+    } else if ((startCode >= 0xd0)&&(startCode <= 0xd7)) {
+        // compact three octet integer
+        uint8_t b0 = 0;
+        uint8_t b1 = 0;
+        [dataInputStream read:&b0 maxLength:1];
+        [dataInputStream read:&b1 maxLength:1];
+        val = [NSNumber numberWithInt:(((startCode - 0xd4) << 16) + (b1 << 8) + b0)];
+    } else {
+        NSLog(@"ERROR: unknown int start code %i", startCode);
+    }
+    return val;
+}
+
+- (id) allocObjectWithType:(NSMutableDictionary *)dict andType:(NSString *)type {
+
+    if((!type) || ([type length] == 0)) {
+        return nil;
+    }
+
+    Class mappedClass = nil;
+    mappedClass  = [self classForClassName:type];
+    if(!mappedClass) { //try the global mapping
+        mappedClass = [BBSHessianDecoder classForClassName:type];
+    }
+    if(mappedClass) {
+        [dict setObject:NSStringFromClass(mappedClass) forKey:BBSHessianClassNameKey];
+    }
+    else {
+        // not a mapped class. remember hessian class name
+        [dict setObject:type forKey:BBSHessianClassNameKey];
+    }
+    
+    if(mappedClass) {
+        // a mapped class, user map decoder to init object
+        return [mappedClass alloc];
     }
     return nil;
 }
 
+
 - (id) decodeMap {
     id dict = [NSMutableDictionary dictionary];
-    //add the pointer to the ref array and not the actually value. 
-    [refArray addObject:[NSValue valueWithPointer:dict]];
-    Class mappedClass = nil;
     uint8_t objectTag = 'e';
+    NSString *type = nil;
     if([dataInputStream hasBytesAvailable]) {    
         [dataInputStream read:&objectTag maxLength:1];  
         if(objectTag == 't') {
             //decode the type of map, maps with a type are objects of a particular class
             //if we have a class mapping for this then             
-            NSString * type = [self decodeString:'S'];                 
-            if(type != nil && [type length] > 0) {
-                mappedClass  = [self classForClassName:type];
-                if(!mappedClass) { //try the global mapping
-                    mappedClass = [BBSHessianDecoder classForClassName:type];
-                }
-                if(mappedClass) {
-                    [dict setObject:NSStringFromClass(mappedClass) forKey:BBSHessianClassNameKey];
-                }
-                else {
-                     // not a mapped class. remember hessian class name
-                    [dict setObject:type forKey:BBSHessianClassNameKey];
-                }
-            }
-        }         
+            type = [self decodeString:'S'];
+            [typeMap addObject:type];
+        } else if (objectTag == 0x75) {
+            // type ref.
+            [dataInputStream read:&objectTag maxLength:1];
+            int typeRef = [[self decodeIntForCode:objectTag] intValue];
+            type = [typeMap objectAtIndex:typeRef];
+        }
+        
+        id val = [self allocObjectWithType:dict andType:type];
+        if(val) {
+            [self addToRefArray:val];
+        } else {
+            [self addToRefArray:dict];
+        }
         
         [dataInputStream read:&objectTag maxLength:1];
          while(objectTag != 'z' && [dataInputStream hasBytesAvailable]) {                       
             //read the type
             id key = [self decodeObjectForCode:objectTag];
             [dataInputStream read:&objectTag maxLength:1];
+            if(objectTag == 'z') {
+                // java enum are serialized by hessian using a Map with a single key, but no value
+                [dict setObject:[NSNull null] forKey:key];
+                
+                // special case for enum. looks like a bug in the java implementation
+                // http://bugs.caucho.com/view.php?id=2662
+                NSLog(@"DEBUG: enum encoded as map should not be added to refArray. remove");
+                [refArray removeLastObject];
+                break;
+            }
             id value = [self decodeObjectForCode:objectTag];
             if(key != nil) {
                 if(value == nil) {
@@ -261,13 +393,14 @@ static NSMutableDictionary * gClassMapping;
             [dataInputStream read:&objectTag maxLength:1];  
         }
         
-        if(mappedClass) {
-            //a mapped class, user map decoder to init object
+        if(val) {
             BBSHessianMapDecoder * mapDecoder = [[[BBSHessianMapDecoder alloc] initForReadingWithDictionary:dict] autorelease];
-            id obj = [[[mappedClass alloc] initWithCoder:mapDecoder] autorelease];            
-            return obj;
+            val = [[val initWithCoder:mapDecoder] autorelease];            
+            return val;
+        } else {
+            return dict;
         }
-        return dict;
+        
     }
     else {
         NSLog(@"no data available");
@@ -275,44 +408,77 @@ static NSMutableDictionary * gClassMapping;
     return nil;
 }
 
-- (NSArray * ) decodeList {
-    NSMutableArray * array = [NSMutableArray array];
-    [refArray addObject:[NSValue valueWithPointer:array]];
-    uint8_t objectTag = 'e';
-    if([dataInputStream hasBytesAvailable]) {    
-        //type and length might be available, accord to the spec
-        //type comes first then the length.
-        [dataInputStream read:&objectTag maxLength:1]; 
-        if(objectTag == 't') {
-            //decode the type of list, we don't really care about this
-            //because we are using an NSArray
-            NSString * type = [self decodeString:'S'];  
-            //if type exists then check for length also
-            [dataInputStream read:&objectTag maxLength:1];
-            #pragma unused (type)            
-        }  
-        
-        if(objectTag == 'l') {
-            //length of object in reply, gobble it up because we don't really 
-            //care about this because we're creating an NSArray
-            NSNumber * len = [self decodeInt];
-            #pragma unused (len)
-            //length exists, read in the next tag
-            [dataInputStream read:&objectTag maxLength:1]; 
-        }
-                
-        while(objectTag != 'z' && [dataInputStream hasBytesAvailable]) {  
-            id obj = [self decodeObjectForCode:objectTag];
-            if(obj) { 
-                [array addObject:obj];
-            }
-            [dataInputStream read:&objectTag maxLength:1];  
-         }
-         return array;
-    }   
-    return nil;
-}
+- (NSArray * ) decodeList:(uint8_t) startCode {
 
+    NSString *type = nil;
+    int length = -1;
+
+    if (startCode == 'v') {
+        uint8_t st = 'e';
+        
+        [dataInputStream read:&st maxLength:1];
+        int typeRef = [[self decodeIntForCode:st] intValue];
+        type = [typeMap objectAtIndex:typeRef];
+        
+        [dataInputStream read:&st maxLength:1];
+        length = [[self decodeIntForCode:st] intValue];
+    }
+    
+    NSMutableArray * array = [NSMutableArray array];
+    [self addToRefArray:array];
+    uint8_t objectTag = 'e';
+    uint8_t st = 'e';
+    
+    // handle 'v' list with zero length as it does not end with a z
+    if(length == 0) {
+        return array;
+    }
+    
+    [dataInputStream read:&objectTag maxLength:1]; 
+    while(objectTag != 'z' && [dataInputStream hasBytesAvailable]) {  
+    
+        switch(objectTag) {
+            case 't':
+                // type
+                type = [self decodeString:'S'];
+                [typeMap addObject:type];
+                [dataInputStream read:&objectTag maxLength:1];
+                continue;
+            case 0x75:
+                // type ref.
+                st = 'e';
+                [dataInputStream read:&st maxLength:1];
+                int typeRef = [[self decodeIntForCode:st] intValue];
+                type = [typeMap objectAtIndex:typeRef];
+                continue;
+            case 0x6e:
+                st = 'e';
+                [dataInputStream read:&st maxLength:1];
+                length = [[self decodeIntForCode:st] intValue];
+                [dataInputStream read:&objectTag maxLength:1];
+                continue;
+            case 'l':
+                length = [[self decodeInt] intValue];
+                [dataInputStream read:&objectTag maxLength:1];
+                continue;
+        }
+    
+        id obj = [self decodeObjectForCode:objectTag];
+        if(!obj) { 
+            obj = [NSNull null];
+        }
+        [array addObject:obj];
+        
+        // 'v' list does not end with a z
+        if ((startCode == 'v') && (length == [array count])) {
+            break;
+        }
+        
+        [dataInputStream read:&objectTag maxLength:1];  
+     }
+     
+     return array;
+}
 
 - (NSNumber *) decodeLong {
     SInt64 aLong = 0;
@@ -473,9 +639,91 @@ static NSMutableDictionary * gClassMapping;
 
 }
 
-- (id) decodeRef {    
-    int ref = [[self decodeInt] intValue];
-    return [[refArray objectAtIndex:ref] pointerValue];
+- (void) addToRefArray:(id) val
+{
+    [refArray addObject:[NSValue valueWithPointer:val]];
+}
+
+- (id) decodeRef:(uint8_t) startCode {    
+    int ref = 0;
+    uint8_t helper = 'e';
+    switch(startCode) {
+        case 'R': 
+            ref = [[self decodeInt] intValue]; 
+            break;
+        case 0x4a:
+            helper = 0;
+            [dataInputStream read:&helper maxLength:1];
+            ref = helper;
+            break;
+        case 0x4b:
+            helper = 0;
+            [dataInputStream read:&helper maxLength:1];
+            ref = (helper << 8);
+            helper = 0;
+            [dataInputStream read:&helper maxLength:1];
+            ref = ref + helper;
+            break;
+    }
+    NSObject *val = [[refArray objectAtIndex:ref] pointerValue];
+    return val;
+}
+
+- (void) decodeCompactObjectHeader {
+    NSString *type = [self decodeCompactString];
+    [objectDefinitionMap addObject:type];
+    
+    uint8_t aCode = 'e';
+    [dataInputStream read:&aCode maxLength:1];
+    int numOfFields = [[self decodeIntForCode:aCode] intValue];
+    
+    NSMutableArray *fields = [NSMutableArray array];
+    while(numOfFields-- > 0) {
+        NSString *fieldName = [self decodeCompactString];
+        [fields addObject:fieldName];
+    }
+    [fieldsByTypeName setObject:[NSArray arrayWithArray:fields] forKey:type];
+}
+
+- (id) decodeCompactObject {
+
+    uint8_t aCode = 'e';
+    [dataInputStream read:&aCode maxLength:1];
+    int typeIdx = [[self decodeIntForCode:aCode] intValue];
+    NSString *type = [objectDefinitionMap objectAtIndex:typeIdx];
+    NSArray *fields = [fieldsByTypeName objectForKey:type];
+    
+    if(!fields) {
+        NSLog(@"ERROR: could not find fields for type %@", type);
+    }
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    id val = [self allocObjectWithType:dict andType:type];
+    if(val) {
+        [self addToRefArray:val];
+    } else {
+        [self addToRefArray:dict];
+    }
+   
+   unsigned int i = 0;
+   for (i = 0; i < [fields count]; i++) {
+    NSString *fieldName = [fields objectAtIndex:i];
+    
+    id fieldValue = [self decodeObject];
+    if (!fieldValue) {
+        fieldValue = [NSNull null];
+    }
+    [dict setObject:fieldValue forKey:fieldName];
+   }
+   
+   if(val) {
+        BBSHessianMapDecoder * mapDecoder = [[[BBSHessianMapDecoder alloc] initForReadingWithDictionary:dict] autorelease];
+        val = [[val initWithCoder:mapDecoder] autorelease];            
+        return val;
+    } else {
+        return dict;
+    }
 }
 
 - (int) decodeStringLength {

@@ -25,6 +25,8 @@
     NSMutableData * callData;
     NSString * methodName;
     NSArray * parameters;
+    char majorVersion;
+    char minorVersion;
     /*NSMutableDictionary * headers;*/
 }
 
@@ -36,6 +38,15 @@
   * simple pass @"echo" has the remote method name.
   */
 - (id) initWithRemoteMethodName:(NSString *) aMethodName;
+
+/** initialze a Hessian call with a remote method name in addition to specifying the major and minor version of the Hessian protocol.
+  * @param aMethodName is an NSString with the name of the remote method.
+    @param majorProtocolVersion is the major number of the protocol. Currently 1.0 and 2.0 are support as 0x01 and 0x02 respectively. 
+    @param minorProtocolVersion is the minor number of the protocol. Currently this is always 0 or 0x0.
+  */
+- (id) initWithRemoteMethodName:(NSString *) aMethodName
+                    majorProtocolVersion:(char) major
+                    minorProtocolVersion:(char) minor;
 
 /** Return the data encoded in Hessian binary format.
   * Call setParameters before calling data if the remote call will contain parameters.

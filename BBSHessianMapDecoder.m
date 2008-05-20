@@ -110,7 +110,9 @@
     return YES;
 }
 
-
+- (BOOL)containsValueForKey:(NSString *)key {
+    return [[hessianMap allKeys] containsObject:key];
+}
 
 - (void) dealloc {
     [hessianMap release];

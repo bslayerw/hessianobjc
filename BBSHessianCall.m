@@ -31,7 +31,19 @@
 
 - (id) initWithRemoteMethodName:(NSString *) aMethodName {
     if((self = [super init]) != nil) {                        
-        methodName = [aMethodName retain];              
+        methodName = [aMethodName retain];         
+        majorVersion = 0x01;
+        minorVersion = 0x00;
+    }
+    return self;
+}
+
+- (id) initWithRemoteMethodName:(NSString *) aMethodName
+                    majorProtocolVersion:(char) major
+                    minorProtocolVersion:(char) minor {
+    if((self = [self initWithRemoteMethodName:aMethodName]) != nil) {
+        majorVersion = major;
+        minorVersion = minor;
     }
     return self;
 }
@@ -83,8 +95,6 @@
 
 - (void) startCall {
     char call = 'c';
-    char char1 = 0x01;
-    char char0 = 0x00;
     char m = 'm';
     /*char H = 'H';
     //add headers 
@@ -102,8 +112,8 @@
         }
     }*/
     [callData appendBytes:&call length:1];    
-    [callData appendBytes:&char1 length:1];
-    [callData appendBytes:&char0 length:1];
+    [callData appendBytes:&majorVersion length:1];
+    [callData appendBytes:&minorVersion length:1];
     [callData appendBytes:&m length:1];
     
     unsigned short len = [methodName length];
